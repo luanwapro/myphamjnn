@@ -1,0 +1,139 @@
+
+          {{ $sp1 := .Sanpham1 }}
+      {{ $sp := .Sanpham }}
+      {{ $lsp := .Loaisanpham }}
+      {{ range $a :=$sp }}
+      {{ range $b := $sp1 }}
+      {{ if eq $a.Idsp $b.Idsp1}}
+   
+                                            <div class="modal-inner-area row">
+                                                <div class="col-lg-5 col-md-6 col-sm-6">
+                                                   <!-- Product Details Left -->
+                                                    <div class="product-details-left">
+                                                        <div class="product-details-images slider-navigation-1">
+                                                            <div class="lg-image"> 
+                                                                <img src="temp-images/{{$a.Hinhanh1}}" alt="product image">
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="product-details-thumbs slider-thumbs-1">                                        
+                                                            <div class="sm-image"><img src="temp-images/{{$a.Hinhanh2}}"   alt="product image thumb"></div>
+                                                         
+                                                        </div>
+                                                    </div>
+                                                    <!--// Product Details Left -->
+                                                </div>
+                
+                                                <div class="col-lg-7 col-md-6 col-sm-6">
+                                                    <div class="product-details-view-content pt-60">
+                                                        <div class="product-info">
+                                                            <h2>{{$a.Tensanpham}}</h2>
+                                                            {{range $loaisanpham :=$lsp}}
+                                                {{ if eq $loaisanpham.Idloaisp $a.Loaisanpham  }}
+                                                <span class="product-details-ref">{{$loaisanpham.Tenloaisanpham}}</span>
+                                                {{end}}
+                                                {{end}}
+                                                            <div class="rating-box pt-20">
+                                                                    {{if eq $b.Luotbinhchon  5}}
+                                                                    <ul class="rating">
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                        {{end}}
+                                                                        {{if eq $b.Luotbinhchon  4}}
+                                                                        <ul class="rating">
+                                                                            <li><i class="fa fa-star-o"></i></li>
+                                                                            <li><i class="fa fa-star-o"></i></li>
+                                                                            <li><i class="fa fa-star-o"></i></li>
+                                                                            <li><i class="fa fa-star-o"></i></li>
+                                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                            
+                                                                            {{end}}
+                                                                            {{if eq $b.Luotbinhchon  3}}
+                                                                            <ul class="rating">
+                                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                               <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                                {{end}}
+                                                                                {{if eq $b.Luotbinhchon  2}}
+                                                                                <ul class="rating">
+                                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                        
+                                                                                    {{end}}
+                                                                                    {{if eq $b.Luotbinhchon  1}}
+                                                                                    <ul class="rating">
+                                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                                        <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                                        {{end}}
+                                                                    <li class="review-item"><a href="../../thongtinsanpham?idsp={{$a.Idsp}}">Xem Đánh Giá</a></li>
+                                                                    <li class="review-item"><a href="../../thongtinsanpham?idsp={{$a.Idsp}}">Viết Đánh Giá</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="price-box pt-20">
+                                                                    {{ if  eq (floatchuoi $b.Giamgia) "0" }}
+                                                                    <span class="new-price new-price-2"">{{(add $a.Gia "1" "*") }} </span>
+                                                                    {{end}}
+                                                                    {{ if  ne (floatchuoi $b.Giamgia) "0" }}
+                                                                    <span class="new-price new-price-2"">{{(add (floatchuoi $b.Giamgia) "1" "*") }}</span>
+                                                                    
+                                                                   {{end}}
+                                                               
+                                                            </div>
+                                                            <div class="product-desc">
+                                                                <p>
+                                                                    <span>{{$a.Mota}}
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="product-variants">
+                                                                
+                                                            </div>
+                                                            <div class="single-add-to-cart">
+                                                               
+                                                                
+                                                                    <div class="quantity">
+                                                                        
+                                                                        <div class="cart-plus-minus">
+                                                                            <input class="cart-plus-minus-box" value="1" type="text">
+                                                                            <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                                            <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <input  class="add-to-cart" type="submit" onclick="themvaogiohang(idsanpham={{$a.Idsp}})" style="background-color: hotpink;width: 50%;cursor: pointer;border: hotpink solid;color: black" type="button" value="Thêm Sản Phẩm Vào Giỏ Hàng"> 
+                                                                
+                                                          
+                                                          
+                                                            <div class="product-additional-info pt-25">
+                                                                <a onclick="danhsachyeuthich()" style="cursor: pointer"><i class="fa fa-heart-o"></i>Thêm Vào Danh Sách Yêu Thích</a>
+                                                                <div class="product-social-sharing pt-25">
+                                                                    <ul>
+                                                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                                                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
+                                                                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                  
+                                      
+                            {{end}}
+                            {{end}}
+                            {{end}}
+
+
+                     

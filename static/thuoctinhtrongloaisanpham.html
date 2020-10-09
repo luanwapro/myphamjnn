@@ -1,0 +1,367 @@
+{{template "quanly"}}
+<div id="chinhsua" style="position: fixed;margin-top: -6%;width: 100%;height: 100%;background-color: #FFF;z-index: 999999;display: none" >
+  <form action="" method="post" enctype="multipart/form-data" name="form1" style="width:800px;margin-left:30%;margin-top:-10%;background-color:#FFF;opacity:1;border-radius: 10px" enctype="multipart/form-data">
+    <table width="795" style="border: #398439;text-align: left"  >
+      <tr>
+        <th width="426" scope="row"><div >Tên Thuộc Tính :</div></th>
+        <td width="1227"><label for="txttensanpham"></label>
+          <div align="left">
+            <input name="txttensanpham" type="text" id="txttensanpham1" size="50">
+            <input name="chinhsua" id="chinhsua" type="text" value="1"   style="display: none" size="50">
+            <input name="idsp" type="text" value="1" id="idsp"  style="display: none" size="50">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Loại Sản Phẩm:</div></th>
+        <td><label for="cbbloaisanpham"></label>
+          <div align="left">
+              <div align="left">
+          
+                  <div class="multiselect">
+                      <div class="selectBox" onclick="showCheckboxes1()">
+                        <select>
+                          <option>Select an option</option>
+                        </select>
+                        <div class="overSelect"></div>
+                      </div>
+                      <div id="checkboxes1">
+                          {{ range $b := .Loaisanpham}}
+                        <label for="one">
+                          <input type="radio" name="check1" value="{{$b.Idloaisp}}" id="{{$b.Idloaisp}}" />{{$b.Tenloaisanpham}}</label>
+                          {{end}}
+                      </div>
+                    </div>
+              </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Mô Tả:</div></th>
+        <td><label for="txtmota"></label>
+          <div align="left">
+            <textarea name="txtmota" cols="50" rows="5" id="txtmota1"></textarea>
+        </div></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="button" onclick="capnhat()" name="gui" id="gui" value="Cập Nhật " class="button button2" style="margin-left: 70%">
+          <input type="button"  value="Thoát " onclick="thoat()" class="button button3" >
+      <p></p>
+      </th>
+      </tr>
+    </table>
+    <style>
+    .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;} 
+.button3 {background-color: brown;} /* Blue */
+    </style>
+  </form>
+</div>
+
+<form action="" method="post" enctype="multipart/form-data" name="form1" style="width:800px;margin-left:30%;margin-top:-10%;background-color:#FFF;opacity:1;border-radius: 10px" enctype="multipart/form-data">
+    <table width="795" style="border: #398439;text-align: left"  >
+      <tr>
+        <th width="426" scope="row"><div >Tên Thuộc Tính:</div></th>
+        <td width="1227"><label for="txttensanpham"></label>
+          <div align="left">
+            <input name="txttensanpham" type="text" id="txttensanpham" size="50">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Loại Sản Phẩm:</div></th>
+        <td><label for="cbbloaisanpham"></label>
+          <div align="left">
+          
+            <div class="multiselect">
+                <div class="selectBox" onclick="showCheckboxes()">
+                  <select>
+                    <option>Select an option</option>
+                  </select>
+                  <div class="overSelect"></div>
+                </div>
+                <div id="checkboxes">
+                    {{ range $b := .Loaisanpham}}
+                  <label for="one">
+                    <input type="checkbox" name="check" value="{{$b.Idloaisp}}" id="{{$b.Idloaisp}}" />{{$b.Tenloaisanpham}}</label>
+                    {{end}}
+                </div>
+              </div>
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Mô Tả:</div></th>
+        <td><label for="txtmota"></label>
+          <div align="left">
+            <textarea name="txtmota" cols="50" rows="5" id="txtmota"></textarea>
+        </div></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="button" onclick="temp()" name="gui" id="gui" value="Thêm Sản Phẩm " class="button button2" style="margin-left: 70%">
+      <p></p>
+      </th>
+      </tr>
+    </table>
+    <style>
+    .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;} /* Blue */
+    
+.search-container {
+  float: right;
+}
+ .search-container {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+#checkboxes1 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+
+#checkboxes1 label {
+  display: block;
+}
+
+#checkboxes1 label:hover {
+  background-color: #1e90ff;
+}
+    </style>
+
+    
+  </form> 
+  <div class="search-container">
+    <form action="#">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><img src="images/searching-magnifying-glass.png" width="15.8" height="17" ></button>
+    </form>
+  </div>
+
+</br style="margin-top:50px">
+  <table  >
+  <tr style="background-color:#00a65a;color: #F5F5F5;text-align: center"> 
+      <td>Tên Thuộc Tính</td>
+      <td>Loại Sản Phẩm</td>
+          <td>mô tả</td>
+          <td>Chỉnh sửa</td>
+  </tr>
+  
+  
+  {{ $foos := .Thuoctinh }}
+  {{ $bars := .Loaisanpham }}
+  
+  {{range $a := $foos}}
+  <tr>
+          <td>{{ $a.Tenthuoctinh}}</td>
+          <td> 
+              
+  
+               
+              {{range $c := $bars}}
+                 {{ if  eq $c.Idloaisp  $a.Idloaisanpham }}
+                 {{ $c.Tenloaisanpham}}
+                 {{ end}}
+              {{ end}}
+          </td>
+              <td>{{ $a.Mota}}</td>
+          <td> <img src="images/dustbin.png"  style="cursor: pointer"  onclick="xoa(idsp='{{ .Idthuoctinh}}')">| <img src="images/edit.png" width="32px" height="32px" style="cursor: pointer" onclick="chinhsua(idsp='{{ .Idthuoctinh}}')">  </td>
+  
+  </tr>
+  {{end}}
+  </table>
+  
+  
+      <script>
+              new gnMenu( document.getElementById( 'gn-menu' ) );
+          </script>
+      </body>
+  </html><head>
+          <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+          </head>
+          <script>
+            var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+
+
+ 
+}
+function showCheckboxes1(){
+  var checkboxes1 = document.getElementById("checkboxes1");
+  if (!expanded) {
+    checkboxes1.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes1.style.display = "none";
+    expanded = false;
+  }
+}
+          function xoa()
+          {
+               $.get('#',{haha:idsp},function (params) {
+                   
+                   alert('xóa thành công');
+                   window.location=""
+               });
+               {
+  
+               }
+          }
+
+          function chinhsua()
+          {
+            
+                   
+                   $('#chinhsua').css("display","block");
+
+               $('#idsp').val(idsp);
+
+          }
+          function thoat()
+          {
+            $('#chinhsua').css("display","none");
+          }
+
+
+function temp()
+{
+  var name_array ="";
+          var a=document.getElementsByName("check")
+          for (var i=0;i<a.length;i++)
+          {
+
+            if(a[i].checked==true)
+            {
+              name_array+=a[i].value+";";
+              
+            }
+            else
+            {
+              
+            }
+          }
+        
+         $.post('#',{hahaa:name_array,txttensanpham:$('#txttensanpham').val(),txtmota:$('#txtmota').val()});
+         window.location="";
+          }
+
+
+          function capnhat()
+          {
+            var name_array ="";
+          var a=document.getElementsByName("check1");
+          for (var i=0;i<a.length;i++)
+          {
+
+            if(a[i].checked==true)
+            {
+              name_array+=a[i].value+";";
+              
+            }
+            else
+            {
+              
+            }
+          }
+        
+          
+        
+         $.post('#',{hahaa:name_array+";",txttensanpham:$('#txttensanpham1').val(),txtmota:$('#txtmota1').val(),idsp:idsp,chinhsua:"1"});
+         window.location="";
+          }
+          
+          </script>
+
+  
+  <style>
+
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  </style>
+
+
+
+
+</div>

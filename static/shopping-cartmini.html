@@ -1,0 +1,130 @@
+{{$gh :=.Giohang}}
+{{$sp := .Sanpham}}
+{{$sp1 := .Sanpham1}}
+{{$sl :=.Soluong}}
+{{range $index,$a:= $sp}}
+{{range $b:= $gh}}
+{{ if eq $b.Idsanpham $a.Idsp}}
+{{range $sp1:= $sp1}}
+{{ if eq $sp1.Idsp1 $a.Idsp}}
+<tr>
+<td class="li-product-remove"><a style="cursor: pointer" onclick="xoakhoigiohang(idsp={{$a.Idsp}})"><i class="fa fa-times"></i></a></td>
+<td class="li-product-thumbnail"><a href="#"><img src="temp-images/{{$a.Hinhanh1}}" width="150" height="150" alt="Li's Product Image"></a></td>
+<td class="li-product-name"><a href="../../thongtinsanpham?idsp={{$a.Idsp}}">{{$a.Tensanpham}}</a></td>
+
+{{ if  eq (floatchuoi $sp1.Giamgia) "0" }}
+
+<td class="li-product-price"><span class="amount">{{(add $a.Gia "1" "*") }}</span></td>
+{{end}}
+{{ if  ne (floatchuoi $sp1.Giamgia) "0" }}
+<td class="li-product-price"><span class="amount">{{(add (floatchuoi $sp1.Giamgia) "1" "*") }}</span></td>
+{{end}}
+
+<td class="quantity">
+    <label>Số Lượng</label>
+    <div class="cart-plus-minus">
+        <input class="cart-plus-minus-box" value="{{$b.Soluong}}" id="{{$a.Idsp}}" type="text">
+        <div class="dec qtybutton" onclick="tru(idsanpham={{$a.Idsp}})"><i class="fa fa-angle-down" ></i></div>
+        <div class="inc qtybutton" onclick="cong(idsanpham={{$a.Idsp}})"><i class="fa fa-angle-up" ></i></div>
+    </div>
+
+</td>
+
+{{ if  eq (floatchuoi $sp1.Giamgia) "0" }}
+
+<td class="product-subtotal"><span class="amount" id="gia{{$a.Idsp}}">{{(add $a.Gia $b.Soluong "*") }}</span></td>
+{{end}}
+{{ if  ne (floatchuoi $sp1.Giamgia) "0" }}
+<td class="product-subtotal"><span class="amount" >{{(add (floatchuoi $sp1.Giamgia) $b.Soluong "*") }}</span></td>
+
+{{end}}
+<td class="product-subtotal">
+    <div class="coupon2">
+        <input type="button" style="background-color: black;width: 100px;color: white;margin-left: -60%;cursor: pointer" name="update_cart" onclick="themvaogiohang(idsanpham={{$a.Idsp}})" value="Cập Nhật" >
+    </div>
+</td>
+</tr>
+{{end}}
+{{end}}
+{{end}}
+{{end}}
+{{end}}
+
+
+<script>
+var tongtien =0
+
+{{range $index,$a:= $sp}}
+{{range $b:= $gh}}
+{{ if eq $b.Idsanpham $a.Idsp}}
+
+var temp=$('#gia'+'{{$a.Idsp}}').html()
+temp=temp.substring(0, temp.length-3);
+var temp1 = new Array();
+temp1=temp.split(",")
+var bien="";
+for(var i=0;i<temp1.length;i++)
+{
+    bien+=temp1[i];
+}
+
+tongtien+=parseInt(bien);
+
+{{end}}
+{{end}}
+{{end}}
+
+function reverse (s) {
+    var o = '';
+    for (var i = s.length - 1; i >= 0; i--)
+        o += s[i];
+    return o;
+  }
+function dinhdangtiente(num){
+
+   var a=reverse( num.toString());
+
+var rs='';
+   for(var i=0;i<a.length;i++){
+      
+      if(i%3==0&&i!=0){
+
+        rs+=',';
+
+      }
+   rs+= a.charAt(i);
+
+   }
+   return reverse(rs) ;
+}
+
+$('#thanhtien').html(dinhdangtiente(tongtien)+" VNĐ");
+$('#thanhtien1').html(dinhdangtiente(tongtien)+" VNĐ");
+{{$b1 :=.Sanpham}}
+
+
+var noidungthongbao="";
+
+
+{{range $a:=.Thongbao}}
+{{range $b:= $b1}}
+{{if eq $a.Idsanpham $b.Idsp}}
+noidungthongbao+="<p>   Sản Phẩm {{$b.Tensanpham}} Với Số Lượng {{$a.Soluong}} </p>";
+{{end}}
+{{end}}
+{{end}}
+
+{{range $a:= .Thongbao}}
+
+$('#thongbao1').css('display','block');
+
+{{end}}
+
+function dong(){
+    
+$('#thongbao1').css('display','none');
+window.location="";
+}
+noidungthongbao+="Bạn Đã Đặt Hàng Hiện Giờ Trong Kho Không Còn Đủ Số Lượng Shop Sẽ Giảm Số Lượng Bằng Số Lượng Trong Kho Xin Lỗi Về Sự Bất Tiện Này.Nếu Số Lượng Trong Kho Bằng 0 Thì Shop Sẽ Xóa Sản Phẩm Này Cảm On7 Qúy Khách Đã Mua Hàng Tại Shop";
+$('#thongbao').html(noidungthongbao);
+</script>

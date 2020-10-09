@@ -1,0 +1,680 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+    <!-- Left Panel -->
+   
+
+
+  
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống Kê </a>
+                    </li>
+                    <h3 class="menu-title">Quản Lý Thông Tin</h3><!-- /.menu-title -->
+                   
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Menu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="../../quanlysanpham">Quản Lý Sản Phẩm</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlyloaisanpham">Quản Lý Loại Sàn Phẩm</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlydonhang">Quản Lý Đơn Hàng</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlynhacungcap">Quản Lý Nhà Cung Cấp</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlynhasanxuat">Quản Lý Nhà Sản Xuất</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlybinhluan">Quản Lý Bình Luận</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlyuser">Quản Lý User</a></li>
+                           
+                         
+                        </ul>
+                    </li>
+             
+
+
+                
+                
+                
+                  
+                    <h3 class="menu-title">Quản Lý Tài Khoản</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Quản Lý Tài Khoản</a>
+                        <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-sign-in"></i><a href="#" style="cursor: pointer" onclick="dangxuat()">Đăng Xuất</a></li>
+                                <li><i class="menu-icon fa fa-sign-in"></i><a href="../../thaydoimatkhauquanly">Đổi Mật Khẩu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+
+            </div>
+        </div>
+<!-- //chinhsua -->
+
+<style>
+         <style>
+                    .canphai{
+                        text-align: right;
+                    }
+                </style>
+</style>
+
+                        {{ $foos := .Sanpham }}
+                        {{ $loaisanpham := .Loaisanpham }}
+                        {{ $sanpham1 := .Sanpham1 }}
+                        {{ $nhasanxuat := .Nhasanxuat }}
+                        {{ $nhacungcap := .Nhacungcap }}
+                          {{range $sanpham := $foos}}
+                          {{range $sanpham1 := $sanpham1}}
+                          {{if eq $sanpham1.Idsp1  $sanpham.Idsp}}
+
+                            <div class="modal fade right" id="chinhsua{{$sanpham.Idsp}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+                                <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
+                                    <div class="modal-content-full-width modal-content ">
+                                        <div class=" modal-header-full-width   modal-header text-center">
+                                            <h5 class="modal-title w-100" id="exampleModalPreviewLabel">Material Design  Full Screen Modal</h5>
+                                            <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                                <span style="font-size: 1.3em;" aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                            
+
+                            
+                                                                  
+
+                                                                            <div class="card-body card-block">
+                                                                                <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
+                                                                                 
+                                                                                    <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label" for="text-input">Tên Sản Phẩm </label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="txttensanpham" class="form-control" id="txttensanpham" type="text" value="{{$sanpham.Tensanpham}}" placeholder="Tên Sản Phẩm Vd : Bánh Ngọt"><small class="form-text text-muted"></small></div>
+                                                                                    </div>
+                        
+                                                                                  <div><input name="chinhsua" value="1" style="display: none"></div>
+                                                                                  <div><input name="idsp" value="{{$sanpham.Idsp}}" style="display: none"></div>
+                                                                                           <div class="row form-group">
+                                                                                            <div class="col col-md-3"><label class=" form-control-label" for="select">Loại Sản Phẩm</label></div>
+                                                                                            <div class="col-12 col-md-9">
+                                                                                                <select name="cbbloaisanpham" class="form-control" id="cbbloaisanpham">
+                                                                                                  {{ range $b := $loaisanpham}}
+                                                                                                  {{if eq $sanpham.Loaisanpham $b.Idloaisp}}
+                                                                                            <option value="{{$b.Idloaisp}}" aria-checked="true">{{$b.Tenloaisanpham}}</option>
+                                                                                            {{end}}
+                                                                                            {{if ne $sanpham.Loaisanpham $b.Idloaisp}}
+                                                                                            <option value="{{$b.Idloaisp}}" aria-checked="false">{{$b.Tenloaisanpham}}</option>
+                                                                                            {{end}}
+                                                                                            {{end}}
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                        
+                                                                                    <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="email-input">Giá</label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="txtgia" class="form-control" id="txtgia" type="number" value="{{$sanpham.Gia}}" placeholder="Vui Lòng Điền Giá Sản Phẩm"><small class="help-block form-text"></small></div>
+                                                                                    </div>
+                                                                                    <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="email-input">Bạn Có Muốn Thay Đổi Hình Ảnh Của Sản Phẩm</label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="thaydoianh" class="form-control" id="{{$sanpham.Idsp}}thaydoianh" type="checkbox" placeholder="Vui Lòng Điền Giá Sản Phẩm" style="width: 20px;height: 20px;" onchange="thaydoihinhanh(idsp={{$sanpham.Idsp}})"><small class="help-block form-text">Thay đổi</small></div>
+                                                                                    </div>
+                                                                                    <div id='{{$sanpham.Idsp}}doianh' style="display: none">
+                                                                                   <div class="row form-group">
+                                                                                            <div class="col col-md-3"><label class=" form-control-label canphai" for="file-input">Hình Ảnh 1</label></div>
+                                                                                            <div class="col-12 col-md-9"><input name="txtanh1" class="form-control-file" id="txtanh1" type="file"> <span style="color: red;font-size: 15px">Nếu Không Thay Đổi Hãy Bỏ Trống</span></div>
+                                                                                        </div>
+                                                                                        <div class="row form-group">
+                                                                                            <div class="col col-md-3"><label class=" form-control-label canphai" for="file-multiple-input">Hình Ảnh 2 </label></div>
+                                                                                            <div class="col-12 col-md-9"><input name="txtanh2" class="form-control-file" id="txtanh2" type="file" multiple=""><span style="color: red;font-size: 15px">Nếu Không Thay Đổi Hãy Bỏ Trống</span></div>
+                                                                                        </div>
+                                                                                          <div class="row form-group">
+                                                                                            <div class="col col-md-3"><label class=" form-control-label canphai" for="file-multiple-input">Hình Ảnh 2 </label></div>
+                                                                                            <div class="col-12 col-md-9"><input name="txtanh3" class="form-control-file" id="txtanh3" type="file" multiple=""><span style="color: red;font-size: 15px">Nếu Không Thay Đổi Hãy Bỏ Trống</span></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="textarea-input">Mô Tả</label></div>
+                                                                                        <div class="col-12 col-md-9"><textarea name="txtmota" class="form-control" id="editor{{$sanpham.Idsp}}" placeholder="Nội Dung" value="{{$sanpham.Mota}}" rows="9">{{$sanpham.Mota}}</textarea></div>
+                                                                                    </div>
+                                                                                    <!-- editor{{$sanpham.Idsp}} -->
+                                                                                     <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="email-input">Giảm Giá</label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="giamgia" class="form-control" id="giamgia" type="number" min="0" value="{{$sanpham1.Giamgia}}" placeholder="Vd : giá sản phẩm giảm còn 250000"><small class="help-block form-text"></small></div>
+                                                                                    </div>
+                                                                                      
+                                                                                           <div class="row form-group">
+                                                                                            <div class="col col-md-3"><label class=" form-control-label canphai" for="select">Nhà Sản Xuất</label></div>
+                                                                                            <div class="col-12 col-md-9">
+                                                                                                <select name="cbnhasanxuat" class="form-control" id="cbnhasanxuat">
+                                                                                              {{ range $a := $nhasanxuat}}
+                                                                                              {{if eq $a.Idnhasanxuat $sanpham1.Manhasanxuat}}
+                                                                                                <option value="{{$a.Idnhasanxuat}}" aria-checked="true">{{$a.Tennhasanxuat}}</option>
+                                                                                                {{end}}
+                                                                                                {{if ne $a.Idnhasanxuat $sanpham1.Manhasanxuat}}
+                                                                                                <option value="{{$a.Idnhasanxuat}}" aria-checked="false">{{$a.Tennhasanxuat}}</option>
+                                                                                                {{end}}
+                                                                                                {{end}}
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                        
+                                                                                           <div class="row form-group">
+                                                                                            <div class="col col-md-3"><label class=" form-control-label canphai" for="select">Nhà Cung Cấp</label></div>
+                                                                                            <div class="col-12 col-md-9">
+                                                                                                <select name="cbnhacungcap" class="form-control" id="cbnhacungcap">
+                                                                                        {{ range $b := $nhacungcap}}
+                                                                                        {{if eq $b.Idnhacungcap $sanpham1.Manhacungcap}}
+                                                                                  <option value="{{$b.Idnhacungcap}}" aria-checked="true">{{$b.TenNhaCungCap}}</option>
+                                                                                                    {{end}}
+                                                                                                    {{if ne $b.Idnhacungcap $sanpham1.Manhacungcap}}
+                                                                                                    <option value="{{$b.Idnhacungcap}}"  aria-checked="false">{{$b.TenNhaCungCap}}</option>
+                                                                                                                      {{end}}
+                                                                                                                      {{end}}
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                        
+                        
+                                                                                            <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="email-input">Số Lượng Tồn</label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="soluongton" class="form-control" id="soluongton" type="number" value="{{$sanpham1.Soluongton}}" min="1" value="1" placeholder="Vd : 30 Sản Phẩm ít nhất 1 sản phẩm"><small class="help-block form-text"></small></div>
+                                                                                    </div>
+                        
+                                                                                    
+                                                                                            <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="email-input">Lượt Xem</label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="luotxem" class="form-control" id="luotxem" value="{{$sanpham1.Luotxem}}" type="number" min="0" value="0" placeholder=""><small class="help-block form-text"></small></div>
+                                                                                    </div>
+                        
+                        
+                                                                                           <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="email-input">Lượt Bình Chọn</label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="luotbinhchon" class="form-control" id="luotbinhchon"  value="{{$sanpham1.Luotbinhchon}}" type="number" min="0" value="5" max="5" placeholder=""><small class="help-block form-text"></small></div>
+                                                                                    </div>
+                        
+                        
+                                                                                      <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai"  for="email-input">Ngày Cập Nhật</label></div>
+                                                                                        <div class="col-12 col-md-9"><input name="ngaycapnhat" class="form-control" id="ngaycapnhat" value="{{$sanpham1.Ngaycapnhat}}" type="date" min="0" value="5" max="5" placeholder=""><small class="help-block form-text"></small></div>
+                                                                                    </div>
+                        
+                                                                                      <div class="row form-group">
+                                                                                        <div class="col col-md-3"><label class=" form-control-label canphai" for="textarea-input">Sơ Lượt</label></div>
+                                                                                        <div class="col-12 col-md-9"><textarea name="txtsoluot" class="form-control" value="{{$sanpham1.Cauhinh}}" id="editorsl{{$sanpham.Idsp}}" placeholder="Nội Dung" rows="9">{{$sanpham1.Cauhinh}}</textarea></div>
+                                                                                    </div>
+                                                                                    <!-- editorsl{{$sanpham.Idsp}} -->
+                                                                                <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 60%">
+                                                                                    <i class="fa fa-dot-circle-o"></i> Cập Nhật Sản Phẩm
+                                                                                </button>
+                                                                                <button class="btn btn-danger btn-sm" type="reset">
+                                                                                    <i class="fa fa-ban"></i> Xóa Tất Cả
+                                                                                </button>
+                                                                            
+                                                                                </form>
+                                                                            </div>
+                                                                          
+                                                                       
+                                                                        
+                                                                    
+                                                                    </div>
+
+
+                                                                    
+            </div>
+            <div class="modal-footer-full-width  modal-footer">
+                <button type="button" class="btn btn-danger btn-md btn-rounded" data-dismiss="modal">Close</button>
+            
+            </div>
+            </div>
+            </div>
+            </div>
+            
+            </div>
+{{end}}
+{{end}}
+{{end}}
+
+<style>
+.modal-backdrop {
+  z-index: -1;
+
+}
+
+.modal-header-full-width{
+    width: 100%;
+}
+.modal-dialog-full-width {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width:none !important;
+
+    }
+
+    .modal-content-full-width  {
+        height: auto !important;
+        min-height: 100% !important;
+        border-radius: 0 !important;
+        background-color: #ececec !important 
+    }
+
+    .modal-header-full-width  {
+        border-bottom: 1px solid #9ea2a2 !important;
+    }
+
+    .modal-footer-full-width  {
+        border-top: 1px solid #9ea2a2 !important;
+    }
+</style>
+<div class="modal fade right" id="themsanpham" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog-full-width modal-dialog momodel modal-fluid" role="document">
+        <div class="modal-content-full-width modal-content ">
+            <div class=" modal-header-full-width   modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalPreviewLabel">Material Design  Full Screen Modal</h5>
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span style="font-size: 1.3em;" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <style>
+                    .canphai{
+                        text-align: right;
+                    }
+                </style>
+  
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <strong>Thêm Sản Phẩm</strong> 
+                                                    </div>
+                                                    <div class="card-body card-block">
+                                                        <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3 canphai" ><label class=" form-control-label" for="text-input" >Tên Sản Phẩm </label></div>
+                                                                <div class="col-12 col-md-9"><input name="txttensanpham" class="form-control" id="txttensanpham" type="text" placeholder="Tên Sản Phẩm Vd : Bánh Ngọt"><small class="form-text text-muted"></small></div>
+                                                            </div>
+
+                                                          
+
+                                                                   <div class="row form-group">
+                                                                    <div class="col col-md-3 canphai"><label class=" form-control-label" for="select">Loại Sản Phẩm</label></div>
+                                                                    <div class="col-12 col-md-9">
+                                                                        <select name="cbbloaisanpham" class="form-control" id="cbbloaisanpham">
+                                                                          {{ range $b := .Loaisanpham}}
+                                                                    <option value="{{$b.Idloaisp}}">{{$b.Tenloaisanpham}}</option>
+                                                                    {{end}}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="email-input">Giá</label></div>
+                                                                <div class="col-12 col-md-9"><input name="txtgia" class="form-control" id="txtgia" type="number" placeholder="Vui Lòng Điền Giá Sản Phẩm"><small class="help-block form-text"></small></div>
+                                                            </div>
+
+                                                          
+                                                            
+                                                           <div class="row form-group">
+                                                                    <div class="col col-md-3 canphai"><label class=" form-control-label" for="file-input">Hình Ảnh 1</label></div>
+                                                                    <div class="col-12 col-md-9"><input name="txtanh1" class="form-control-file" id="txtanh1" type="file"></div>
+                                                                </div>
+                                                                <div class="row form-group">
+                                                                    <div class="col col-md-3 canphai"><label class=" form-control-label" for="file-multiple-input">Hình Ảnh 2 </label></div>
+                                                                    <div class="col-12 col-md-9"><input name="txtanh2" class="form-control-file" id="txtanh2" type="file" multiple=""></div>
+                                                                </div>
+                                                                  <div class="row form-group">
+                                                                    <div class="col col-md-3 canphai"><label class=" form-control-label" for="file-multiple-input">Hình Ảnh 2 </label></div>
+                                                                    <div class="col-12 col-md-9"><input name="txtanh3" class="form-control-file" id="txtanh3" type="file" multiple=""></div>
+                                                                </div>
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="textarea-input">Mô Tả</label></div>
+                                                                <div class="col-12 col-md-9"><textarea name="txtmota" class="form-control" id="editorthem" placeholder="Nội Dung" rows="9"></textarea></div>
+                                                            </div>
+                                                             <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="email-input">Giảm Giá</label></div>
+                                                                <div class="col-12 col-md-9"><input name="giamgia" class="form-control" id="giamgia" type="number" min="0" placeholder="Vd : giá sản phẩm giảm còn 250000"><small class="help-block form-text"></small></div>
+                                                            </div>
+                                                              
+                                                                   <div class="row form-group">
+                                                                    <div class="col col-md-3 canphai"><label class=" form-control-label" for="select">Nhà Sản Xuất</label></div>
+                                                                    <div class="col-12 col-md-9">
+                                                                        <select name="cbnhasanxuat" class="form-control" id="cbnhasanxuat">
+                                                                      {{ range $a := .Nhasanxuat}}
+                                                                        <option value="{{$a.Idnhasanxuat}}">{{$a.Tennhasanxuat}}</option>
+                                                                        {{end}}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                   <div class="row form-group">
+                                                                    <div class="col col-md-3 canphai"><label class=" form-control-label" for="select">Nhà Cung Cấp</label></div>
+                                                                    <div class="col-12 col-md-9">
+                                                                        <select name="cbnhacungcap" class="form-control" id="cbnhacungcap">
+                                                                {{ range $b := .Nhacungcap}}
+                                                          <option value="{{$b.Idnhacungcap}}">{{$b.TenNhaCungCap}}</option>
+                                                                            {{end}}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                    <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="email-input">Số Lượng Tồn</label></div>
+                                                                <div class="col-12 col-md-9"><input name="soluongton" class="form-control" id="soluongton" type="number" min="1" value="1" placeholder="Vd : 30 Sản Phẩm ít nhất 1 sản phẩm"><small class="help-block form-text"></small></div>
+                                                            </div>
+
+                                                            
+                                                                    <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="email-input">Lượt Xem</label></div>
+                                                                <div class="col-12 col-md-9"><input name="luotxem" class="form-control" id="luotxem" type="number" min="0" value="0" placeholder=""><small class="help-block form-text"></small></div>
+                                                            </div>
+
+
+                                                                   <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="email-input">Lượt Bình Chọn</label></div>
+                                                                <div class="col-12 col-md-9"><input name="luotbinhchon" class="form-control" id="luotbinhchon" type="number" min="0" value="5" max="5" placeholder=""><small class="help-block form-text"></small></div>
+                                                            </div>
+
+
+                                                              <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="email-input">Ngày Cập Nhật</label></div>
+                                                                <div class="col-12 col-md-9"><input name="ngaycapnhat" class="form-control" id="ngaycapnhat" type="number" min="0" value="5" max="5" placeholder=""><small class="help-block form-text"></small></div>
+                                                            </div>
+
+                                                              <div class="row form-group">
+                                                                <div class="col col-md-3 canphai"><label class=" form-control-label" for="textarea-input">Sơ Lượt</label></div>
+                                                                <div class="col-12 col-md-9"><textarea name="txtsoluot" class="form-control" id="editorsoluoc" placeholder="Nội Dung" rows="9"></textarea></div>
+                                                            </div>
+                                                        <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 60%">
+                                                            <i class="fa fa-dot-circle-o"></i> Thêm Sản Phẩm
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm" type="reset">
+                                                            <i class="fa fa-ban"></i> Xóa Tất Cả
+                                                        </button>
+                                                    
+                                                        </form>
+                                                    </div>
+                                                  
+                                                </div>
+                                                
+                                     
+</div>
+<div class="modal-footer-full-width  modal-footer">
+    <button type="button" class="btn btn-danger btn-md btn-rounded" data-dismiss="modal">Close</button>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<button class="btn btn-success btn-sm" type="button"  onclick="ExportToExcel()" style="margin-left: 85%"><i class="fa fa-magic"></i>&nbsp; Xuất File Excel</button>
+                                        </br>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Danh Sách Sản Phẩm</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Hình Ảnh</th>
+                                            <th>Loại Sản Phẩm</th>
+                                            <th>Giá</th>
+                                            <th>Mô Tả</th>
+                                             <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         {{ $foos := .Sanpham }}
+                                        {{ $bars := .Loaisanpham }}
+                                          {{range $a := $foos}}
+                                        <tr>
+                                            <td>{{ $a.Tensanpham}}</td>
+                                            <td><img src='temp-images/{{$a.Hinhanh1}}' width="160px" height="80px" style="width: 20px height:20px" /></td>
+                                          {{range $c := $bars}}
+                                             {{ if  eq $c.Idloaisp  $a.Loaisanpham }}
+                                             <td>{{ $c.Tenloaisanpham}}</td>
+                                             {{ end}}
+                                          {{ end}}
+                                        
+                                            <td>{{ $a.Gia}}</td>
+                                            <td ><p style="font-size: 15px">{{ $a.Mota}}</p></td>
+                                            <td>
+                                                <div>
+
+
+                                                        <button class="btn btn-primary btn-sm" type="submit"   data-toggle="modal" data-target="#chinhsua{{ .Idsp}}"  onclick="chinhsua(idsp='{{ .Idsp}}')">
+                                                                <i class=" fa fa-edit"></i> Chỉnh Sửa
+                                                            </button>
+                                                </div>
+                                                     <div style="margin-top: 5px">
+
+                                                            <button class="btn btn-primary btn-sm" type="submit" data-toggle="modal" onclick="hien()" data-target="#themsanpham">
+                                                                    <i class=" fa fa-plus"></i> Thêm Sản Phẩm Mới
+                                                                </button>
+                                                     </div>
+                                                   
+                                                     <div style="margin-top: 5px">
+                                                        <button class="btn btn-danger btn-sm" type="reset" onclick="xoa(idsp='{{ .Idsp}}')">
+                                                            <i class="fa fa-ban"></i> Xóa 
+                                                        </button>
+                                                        </div>
+                                            </td>
+                                        </tr>
+                                      {{end}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+
+</body>
+
+</html>
+<script type="text/javascript">
+
+var demsolancheck=1;
+function thaydoihinhanh(){
+    var idsp1=idsp+'doianh';
+  
+  if(demsolancheck==1){
+     $('#'+idsp1).css('display','block');
+     demsolancheck=0;
+     }
+     else
+     {   $('#'+idsp1).css('display','none');
+     demsolancheck=1;
+     }
+ 
+}
+var dem=0;
+    function hien(){
+
+        CKEDITOR.replace( 'editorthem' );
+    CKEDITOR.replace( 'editorsoluoc' );
+}
+var demcs=0;
+function chinhsua(){
+    CKEDITOR.replace( 'editor'+idsp );
+    CKEDITOR.replace( 'editorsl'+idsp );
+
+}
+function xoa()
+          {
+               $.get('#',{haha:idsp},function (params) {
+                   
+                   alert('xóa thành công');
+                   window.location=""
+               });
+               {
+  
+               }
+          }
+          function scrolltop() 
+            {
+                var id_button = '#scrolltop';
+
+                // Kéo xuống khoảng cách 220px thì xuất hiện button
+                var offset = 220;
+
+                // THời gian di trượt là 0.5 giây
+                var duration = 500;
+
+                // Thêm vào sự kiện scroll của window, nghĩa là lúc trượt sẽ
+                // kiểm tra sự ẩn hiện của button
+                jQuery(window).scroll(function() {
+                    if (jQuery(this).scrollTop() > offset) {
+                        jQuery(id_button).fadeIn(duration);
+                    } else {
+                        jQuery(id_button).fadeOut(duration);
+                    }
+                });
+
+                // Thêm sự kiện click vào button để khi click là trượt lên top
+              
+                    event.preventDefault();
+                    jQuery('html, body').animate({scrollTop: 0}, duration);
+                    return false;
+                
+            }
+
+
+            
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script >
+function ExportToExcel()
+{
+    var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
+    var textRange; var j=0;
+    tab = document.getElementById('bootstrap-data-table-export'); // id of table
+
+    for(j = 0 ; j < tab.rows.length ; j++) 
+    {     
+        tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+        //tab_text=tab_text+"</tr>";
+    }
+
+    tab_text=tab_text+"</table>";
+    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE "); 
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+    {
+        txtArea1.document.open("txt/html","replace");
+        txtArea1.document.write(tab_text);
+        txtArea1.document.close();
+        txtArea1.focus(); 
+        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+    }  
+    else                 //other browser not tested on IE 11
+        sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+    return (sa);
+}
+function dangxuat(){
+    $.post('../../xacnhantaikhoan',{'dangxuat':1},function(data){
+       
+            window.location="";
+        
+      
+    });
+}
+    </script>

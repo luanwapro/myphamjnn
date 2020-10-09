@@ -1,0 +1,419 @@
+{{template "quanly"}}
+<div style="position: fixed;margin-top: -6%;width: 100%;height: 100%;background-color: #FFF;z-index: 999999;display: none"  id="chitiet">
+
+  <form action="" method="post" enctype="multipart/form-data" name="form1" style="width:800px;margin-left:30%;margin-top:-10%;background-color:#FFF;opacity:1;border-radius: 10px" enctype="multipart/form-data">
+    <table width="795" style="border: #398439;text-align: left"  >
+      <tr>
+        <th width="426" scope="row"><div >Giảm Giá:</div></th>
+        <td width="1227"><label for="txttensanpham"></label>
+          <div align="left">
+            <input name="txttensanpham" type="text" id="txttensanpham" size="50">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Mã Nhà Sản Xuất:</div></th>
+        <td><label for="cbbloaisanpham"></label>
+          <div align="left">
+            <select name="cbbloaisanpham" id="cbbloaisanpham">
+                {{ range $a := .Nhasanxuat}}
+                <option value="{{$a.Idnhasanxuat}}">{{$a.Tennhasanxuat}}</option>
+                {{end}}
+            </select>
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Mã Nhà Cung Cấp:</div></th>
+        <td><label for="txtgia"></label>
+          <div align="left">
+              <label for="txtmanhacungcap"></label>
+              <select name="txtmanhacungcap" id="txtmanhacungcap">
+                {{ range $b := .Nhacungcap}}
+                <option value="{{$b.Idnhacungcap}}">{{$b.TenNhaCungCap}}</option>
+                {{end}}
+              </select>
+        
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Số Lượng Tồn:</div></th>
+        <td><label for="txtanh2"></label>
+          <div align="left">
+          
+              <label for="txtsoluongton"></label>
+              <label for="txtsoluongton"></label>
+              <input type="text" name="txtsoluongton" id="txtsoluongton">
+          
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Lượt Xem:</div></th>
+        <td><label for="txtanh3"></label>
+          <div align="left">
+           
+              <label for="txtluotbinhchon"></label>
+              <input type="text" name="txtluotbinhchon" id="txtluotbinhchon">
+         
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Mô Tả:</div></th>
+        <td><label for="txtmota"></label>
+          <div align="left">
+
+              <label for="txtluotxem"></label>
+              <input type="text" name="txtluotxem" id="txtluotxem">
+ 
+        </div></td>
+      </tr>  <tr>
+
+          <th scope="row"><div >Lượt bình chọn:</div></th>
+          <td><label for="txtmota"></label>
+            <div align="left">
+              
+                <label for="txtluotxem"></label>
+                <input type="text" name="txtluotbinhchon" id="txtluotxem">
+              
+          </div></td>
+
+      </tr>
+      <tr>
+
+          <th scope="row"><div >Ngày cập Nhật:</div></th>
+          <td><label for="txtmota"></label>
+            <div align="left">
+              
+                <label for="txtluotxem"></label>
+                <input type="date" name="ngaycapnhat" id="txtluotxem">
+                <input type="text" name="idsanpham" id="idsanpham11" value="1" style="display: none">
+              
+          </div></td>
+
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" name="gui" id="gui" value="Thêm Chi Tiết Sản Phẩm " class="button button2" style="margin-left: 70%">
+      <p></p>
+      </th>
+      </tr>
+    </table>
+    <style>
+    .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;} /* Blue */
+    
+.search-container {
+  float: right;
+}
+ .search-container {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+    </style>
+
+    
+  </form> 
+
+</div>
+<div id="chinhsua" style="position: fixed;margin-top: -6%;width: 100%;height: 100%;background-color: #FFF;z-index: 999999;display: none" >
+  <form action="" method="post" enctype="multipart/form-data" name="form1" style="width:800px;margin-left:30%;margin-top:-10%;background-color:#FFF;opacity:1;border-radius: 10px" enctype="multipart/form-data">
+    <table width="795" style="border: #398439;text-align: left"  >
+      <tr>
+        <th width="426" scope="row"><div >Tên Sản Phẩm :</div></th>
+        <td width="1227"><label for="txttensanpham"></label>
+          <div align="left">
+            <input name="txttensanpham" type="text" id="txttensanpham" size="50">
+            <input name="chinhsua" type="text" value="1"   style="display: none" size="50">
+            <input name="idsp" type="text" value="1" id="idsp"  style="display: none" size="50">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Loại Sản Phẩm:</div></th>
+        <td><label for="cbbloaisanpham"></label>
+          <div align="left">
+            <select name="cbbloaisanpham" id="cbbloaisanpham">
+                {{ range $b := .Loaisanpham}}
+                <option value="{{$b.Idloaisp}}">{{$b.Tenloaisanpham}}</option>
+                {{end}}
+            </select>
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Giá :</div></th>
+        <td><label for="txtgia"></label>
+          <div align="left">
+            <input name="txtgia" type="text" id="txtgia" size="50">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Hình ảnh 1 :</div></th>
+        <td><label for="txtanh1"></label>
+          <div align="left">
+            <input type="file" name="txtanh1" id="txtanh1">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Hình ảnh 2 :</div></th>
+        <td><label for="txtanh2"></label>
+          <div align="left">
+            <input type="file" name="txtanh2" id="txtanh2">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Hình ảnh 3:</div></th>
+        <td><label for="txtanh3"></label>
+          <div align="left">
+            <input type="file" name="txtanh3" id="txtanh3">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Mô Tả:</div></th>
+        <td><label for="txtmota"></label>
+          <div align="left">
+            <textarea name="txtmota" cols="50" rows="5" id="txtmota"></textarea>
+        </div></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" name="gui" id="gui" value="Cập Nhật " class="button button2" style="margin-left: 70%">
+          <input type="button"  value="Thoát " onclick="thoat()" class="button button3" >
+      <p></p>
+      </th>
+      </tr>
+    </table>
+    <style>
+    .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;} 
+.button3 {background-color: brown;} /* Blue */
+    </style>
+  </form>
+</div>
+
+<form action="" method="post" enctype="multipart/form-data" name="form1" style="width:800px;margin-left:30%;margin-top:-10%;background-color:#FFF;opacity:1;border-radius: 10px" enctype="multipart/form-data">
+    <table width="795" style="border: #398439;text-align: left"  >
+      <tr>
+        <th width="426" scope="row"><div >Tên Sản Phẩm :</div></th>
+        <td width="1227"><label for="txttensanpham"></label>
+          <div align="left">
+            <input name="txttensanpham" type="text" id="txttensanpham" size="50">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Loại Sản Phẩm:</div></th>
+        <td><label for="cbbloaisanpham"></label>
+          <div align="left">
+            <select name="cbbloaisanpham" id="cbbloaisanpham">
+                {{ range $b := .Loaisanpham}}
+                <option value="{{$b.Idloaisp}}">{{$b.Tenloaisanpham}}</option>
+                {{end}}
+            </select>
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Giá :</div></th>
+        <td><label for="txtgia"></label>
+          <div align="left">
+            <input name="txtgia" type="text" id="txtgia" size="50">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Hình ảnh 1 :</div></th>
+        <td><label for="txtanh1"></label>
+          <div align="left">
+            <input type="file" name="txtanh1" id="txtanh1">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Hình ảnh 2 :</div></th>
+        <td><label for="txtanh2"></label>
+          <div align="left">
+            <input type="file" name="txtanh2" id="txtanh2">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Hình ảnh 3:</div></th>
+        <td><label for="txtanh3"></label>
+          <div align="left">
+            <input type="file" name="txtanh3" id="txtanh3">
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row"><div >Mô Tả:</div></th>
+        <td><label for="txtmota"></label>
+          <div align="left">
+            <textarea name="txtmota" cols="50" rows="5" id="txtmota"></textarea>
+        </div></td>
+      </tr>
+      <tr>
+        <th colspan="2" scope="row"><input type="submit" name="gui" id="gui" value="Thêm Sản Phẩm " class="button button2" style="margin-left: 70%">
+      <p></p>
+      </th>
+      </tr>
+    </table>
+    <style>
+    .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;} /* Blue */
+    
+.search-container {
+  float: right;
+}
+ .search-container {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+    </style>
+
+    
+  </form> 
+  <div class="search-container">
+    <form action="#">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><img src="images/searching-magnifying-glass.png" width="15.8" height="17" ></button>
+    </form>
+  </div>
+
+</br style="margin-top:50px">
+  <table  >
+  <tr style="background-color:#00a65a;color: #F5F5F5;text-align: center"> 
+      <td>Tên Sản Phẩm</td>
+      <td>Loại Sản Phẩm</td>
+      <td>Giá</td>
+          <td>mô tả</td>
+          <td>Chỉnh sửa</td>
+  </tr>
+  
+  
+  {{ $foos := .Sanpham }}
+  {{ $bars := .Loaisanpham }}
+  
+  {{range $a := $foos}}
+  <tr>
+          <td>{{ $a.Tensanpham}}</td>
+          <td> 
+              
+  
+               
+              {{range $c := $bars}}
+                 {{ if  eq $c.Idloaisp  $a.Loaisanpham }}
+                 {{ $c.Tenloaisanpham}}
+                 {{ end}}
+              {{ end}}
+          </td>
+          <td>{{ $a.Gia}}</td>
+              <td>{{ $a.Mota}}</td>
+          <td> <img src="images/dustbin.png"  style="cursor: pointer"  onclick="xoa(idsp='{{ .Idsp}}')">| <img src="images/edit.png" width="32px" height="32px" style="cursor: pointer" onclick="chinhsua(idsp='{{ .Idsp}}')"> |<img src="images/edit.png" onclick="chitietsanpham(idct='{{ .Idsp}}')" width="32px" height="32px" > </a>  </td>
+  
+  </tr>
+  {{end}}
+  </table>
+  
+  
+      <script>
+              new gnMenu( document.getElementById( 'gn-menu' ) );
+          </script>
+      </body>
+  </html><head>
+          <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+          </head>
+          <script>
+          function xoa()
+          {
+               $.get('#',{haha:idsp},function (params) {
+                   
+                   alert('xóa thành công');
+                   window.location=""
+               });
+               {
+  
+               }
+          }
+
+          function chinhsua()
+          {
+            
+                   
+                   $('#chinhsua').css("display","block");
+
+               $('#idsp').val(idsp);
+
+          }
+          function thoat()
+          {
+            $('#chinhsua').css("display","none");
+          }
+          function chitietsanpham()
+          {
+            $('#chitiet').css('display','block');
+            $('#idsanpham11').val(idct);
+          }
+          </script>
+
+  
+  <style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  </style>
+
+
+
+
+</div>
+
+

@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    </head>
+    <body>
+<div id="invoice">
+
+    <div class="toolbar hidden-print">
+        <div class="text-right">
+            <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> In Hóa Đơn</button>
+            <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
+        </div>
+        <hr>
+    </div>
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px">
+            <header>
+                <div class="row">
+                    <div class="col">
+                        <a target="_blank" href="https://lobianijs.com">
+                            <img src="http://lobianijs.com/lobiadmin/version/1.0/ajax/img/logo/lobiadmin-logo-text-64.png" data-holder-rendered="true" />
+                            </a>
+                    </div>
+                    <div class="col company-details">
+                        <h2 class="name">
+                            <a target="_blank" href="https://lobianijs.com">
+                          Phạm Thị Yến Ngân
+                            </a>
+                        </h2>
+                        <div>285 CMT8, Tòa nhà Viettel, phường 12, quận 10, HCM</div>
+                        <div><a href="tel:0944970893">0944970893</a></div>
+                        <div><a href="mailto:yenngan1990@gmail.com">yenngan1990@gmail.com</a></div>
+                      
+                    </div>
+                </div>
+            </header>
+            <main>
+
+                    {{$Madonhang :=.Madonhang}}
+                <div class="row contacts">
+                    <div class="col invoice-to">
+                            {{range $a:=.Donhang}}
+                            
+                        <div class="text-gray-light">Hóa Đơn:</div>
+                    </br>
+                        <h2 class="to">Tên Khách Hàng: {{$a.Ten}}</h2>
+                  
+                        <div class="email"><a href="mailto:{{$a.Email}}">Email: {{$a.Email}}</a></div>
+               
+                        <div class="email"><a href="tel: {{$a.Sdt}}">Số Điện Thoại: {{$a.Sdt}}</a></div>
+                
+                        <div class="address">Địa Chỉ Giao Hàng: {{$a.Diachi}}</div>
+                 
+                        <div class="address">Ghi Chú: {{$a.Note}}</div>
+                      
+                    </div>
+                    <div class="col invoice-details">
+                        <h1 class="invoice-id">Mã Đơn Hàng : {{$Madonhang}}</h1>
+                        <div class="date">Ngày Mua : {{$a.Ngaylap}}</div>
+                        <div class="date" id="ngayin"></div>
+                    </div>
+                    {{end}}
+                </div>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th class="text-left">Tên Sản Phẩm</th>
+                            <th class="text-right">Giá</th>
+                            <th class="text-right">Số Lượng</th>
+                            <th class="text-right">TỔNG Tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                       
+                            {{$sp :=.Sanpham}}
+                            {{ $item :=.Itemhoadon}}
+                            {{ $sp1 := .Sanpham1 }}
+                         
+                            {{range $i,$b := $item}}
+                            <tr></tr>
+                            {{range $sanpham1 := $sp}}
+                            {{if eq $sanpham1.Idsp $b.Idsanpham }}
+                            {{ range $b1 := $sp1 }}
+                            {{ if eq $sanpham1.Idsp $b1.Idsp1}}
+                            <td>{{$i}}</td>
+                            <td class="unit" style="text-align: left">{{$sanpham1.Tensanpham}}</td>
+                            {{ if  eq (floatchuoi $b1.Giamgia) "0" }}
+                            <td class="total"> {{(add $sanpham1.Gia "1" "*") }} </td>
+                           {{end}}
+                           {{ if  ne (floatchuoi $b1.Giamgia) "0" }}
+                           <td class="total">{{(add (floatchuoi $b1.Giamgia) "1" "*") }} </td>
+                           {{end}}
+                            {{end}}
+                            {{end}}
+                            {{end}}
+                            {{end}}
+                            <td class="qty">{{$b.Soluong}}</td>
+                            <td class="total"> {{ add (floatchuoi $b.Tongtien)  "1" "*"}} </td>
+                        </tr>
+                            {{end}}
+                      
+                    
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2" >Tổng Tiền</td>
+                            <td id="tongtien"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">Phí Khác</td>
+                            <td>0%</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">Thành Tiền</td>
+                            <td id="thanhtien"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="thanks">Thank you!</div>
+                <div class="notices">
+                    <div>ghi Chú:</div>
+                    <div class="notice">Hóa Đơn Chưa Bao Gồm Phí Vận Chuyển Cảm Ơn Qúy Khách Đã Mua Hàng ^^.</div>
+                </div>
+            </main>
+            <footer>
+                Mọi Thắc Mắc Vui Lòng Liên Hệ Cho Chúng Tôi Qua Số Điện Thoại  <a href="tel:0944970893">  0944970893 .</a> 
+            </footer>
+        </div>
+        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+        <div></div>
+    </div>
+</div>
+
+<style>
+#invoice{
+    padding: 30px;
+}
+
+.invoice {
+    position: relative;
+    background-color: #FFF;
+    min-height: 680px;
+    padding: 15px
+}
+
+.invoice header {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3989c6
+}
+
+.invoice .company-details {
+    text-align: right
+}
+
+.invoice .company-details .name {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.invoice .contacts {
+    margin-bottom: 20px
+}
+
+.invoice .invoice-to {
+    text-align: left
+}
+
+.invoice .invoice-to .to {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.invoice .invoice-details {
+    text-align: right
+}
+
+.invoice .invoice-details .invoice-id {
+    margin-top: 0;
+    color: #3989c6
+}
+
+.invoice main {
+    padding-bottom: 50px
+}
+
+.invoice main .thanks {
+    margin-top: -100px;
+    font-size: 2em;
+    margin-bottom: 50px
+}
+
+.invoice main .notices {
+    padding-left: 6px;
+    border-left: 6px solid #3989c6
+}
+
+.invoice main .notices .notice {
+    font-size: 1.2em
+}
+
+.invoice table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px
+}
+
+.invoice table td,.invoice table th {
+    padding: 15px;
+    background: #eee;
+    border-bottom: 1px solid #fff
+}
+
+.invoice table th {
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 16px
+}
+
+.invoice table td h3 {
+    margin: 0;
+    font-weight: 400;
+    color: #3989c6;
+    font-size: 1.2em
+}
+
+.invoice table .qty,.invoice table .total,.invoice table .unit {
+    text-align: right;
+    font-size: 1.2em
+}
+
+.invoice table .no {
+    color: #fff;
+    font-size: 1.6em;
+    background: #3989c6
+}
+
+.invoice table .unit {
+    background: #ddd
+}
+
+.invoice table .total {
+    background: #3989c6;
+    color: #fff
+}
+
+.invoice table tbody tr:last-child td {
+    border: none
+}
+
+.invoice table tfoot td {
+    background: 0 0;
+    border-bottom: none;
+    white-space: nowrap;
+    text-align: right;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-top: 1px solid #aaa
+}
+
+.invoice table tfoot tr:first-child td {
+    border-top: none
+}
+
+.invoice table tfoot tr:last-child td {
+    color: #3989c6;
+    font-size: 1.4em;
+    border-top: 1px solid #3989c6
+}
+
+.invoice table tfoot tr td:first-child {
+    border: none
+}
+
+.invoice footer {
+    width: 100%;
+    text-align: center;
+    color: #777;
+    border-top: 1px solid #aaa;
+    padding: 8px 0
+}
+
+@media print {
+    .invoice {
+        font-size: 11px!important;
+        overflow: hidden!important
+    }
+
+    .invoice footer {
+        position: absolute;
+        bottom: 10px;
+        page-break-after: always
+    }
+
+    .invoice>div:last-child {
+        page-break-before: always
+    }
+}
+</style>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var tongtien=0
+
+{{range $i,$b := $item}}
+
+tongtien+={{$b.Tongtien}};
+{{end}}
+function reverse (s) {
+    var o = '';
+    for (var i = s.length - 1; i >= 0; i--)
+        o += s[i];
+    return o;
+  }
+function dinhdangtiente(num){
+
+   var a=reverse( num.toString());
+
+var rs='';
+   for(var i=0;i<a.length;i++){
+      
+      if(i%3==0&&i!=0){
+
+        rs+=',';
+
+      }
+   rs+= a.charAt(i);
+
+   }
+   return reverse(rs) ;
+}
+$('#thanhtien').html(dinhdangtiente(tongtien)+"VNĐ");
+
+$('#tongtien').html(dinhdangtiente(tongtien)+"VNĐ");
+    var date = new Date();
+            document.getElementById('ngayin').innerText ="Ngày In :"+ date;
+ $('#printInvoice').click(function(){
+            Popup($('.invoice')[0].outerHTML);
+            function Popup(data) 
+            {
+                window.print();
+                return true;
+            }
+        });
+</script>
+
+</body>
+</html>
+

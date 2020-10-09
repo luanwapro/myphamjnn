@@ -1,0 +1,127 @@
+
+ <script src="ckeditor/ckeditor.js"></script>
+{{$binhluan := .Binhluan}}
+{{$anhbinhluan := .Anhbinhluan}}
+{{$binhluans := .Binhluans}}
+
+<div class="container" style="width: 80%;margin-left: 0%">
+    <div style="position: inherit;width: 100%;height: auto;margin-bottom: 30px;z-index: 0">
+
+
+        {{range $key, $anh :=$anhbinhluan}}
+     
+    
+       <img   style="width: 30px; height: 30px;cursor: pointer" onclick='themicon(icon="{{$anh.Duongdan}}")'  src=" {{$anh.Duongdan}}"/>
+    
+           {{end}}
+     </div>
+    <form action="/action_page.php">
+      <p class="feedback-form">
+        <label for="feedback">Viết Đánh Gía</label>
+        <textarea id="noidungcm" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+    </p>
+    <div class="form-group">
+        <label for="pwd">Tên Khách Hàng:</label>
+        <input type="text" class="form-control" id="tenkhachhangcm" placeholder="Tên Khách Hàng" name="pswd">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Email:</label>
+        <input type="text" class="form-control" id="emailcm" placeholder="Email Của Bạn" name="pswd">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Số Điện Thoại:</label>
+        <input type="text" class="form-control" id="sdtcm" placeholder="Số Điện Thoại Của Bạn(Dùng để liên lạc Zalo)" name="pswd">
+      </div>
+      <button type="button" class="btn btn-primary" style="margin-left: 85%" onclick="guibinhluan()">Bình Luận</button>
+   
+    </form>
+  
+   <div class="container mt-3">
+    <h2 style="margin-left: 0%">Danh Sách Bình Luận</h2>
+
+    {{range $bl :=$binhluan}}
+    <div class="media border p-3">
+      <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+      <div class="media-body">
+        <h4>{{$bl.Tenkhachhang}} <small><i>{{$bl.Ngaycapnhat}}</i></small></h4>
+        <p>{{$bl.Noidung}}</p>      
+    
+    <div style="color: blue;cursor: pointer;margin-left: 10%" onclick="traloi(idbinhluan={{$bl.Idbinhluan}},tenkhachhang='{{$bl.Tenkhachhang}}')"> Trả Lời | Báo Cáo</div>
+      </br>
+    <div id="{{$bl.Idbinhluan}}" style="cursor: pointer;margin-left: 10%" onclick="xemthembinhluan(idbinhluan={{$bl.Idbinhluan}})">Xem Thêm Bình Luận</div>
+    <div id="thu{{$bl.Idbinhluan}}" style="cursor: pointer;margin-left: 10%;display: none" onclick="thugonbinhluan(idbinhluan={{$bl.Idbinhluan}})">Thu Gọn Bình Luận</div>
+      </br>
+    <div id="khung{{$bl.Idbinhluan}}" style="display: none">
+        <form action="/action_page.php">
+          <div style="position: inherit;width: 100%;height: auto;margin-bottom: 30px;z-index: 0">
+
+
+              {{range $key, $anh :=$anhbinhluan}}
+           
+          
+             <img   style="width: 30px; height: 30px;cursor: pointer" onclick='themicon1(icon="{{$anh.Duongdan}}",idbinhluan={{$bl.Idbinhluan}})'  src=" {{$anh.Duongdan}}"/>
+          
+                 {{end}}
+           </div>
+            <p class="feedback-form">
+              <label for="feedback">Viết Đánh Giá</label>
+              <textarea id="noidungcm{{$bl.Idbinhluan}}" name="comment" cols="45" rows="8" onkeyup="dienten()" aria-required="true"></textarea>
+
+              <script>
+                CKEDITOR.replace( 'noidungcm{{$bl.Idbinhluan}}' );
+              </script>
+          </p>
+          <div class="form-group">
+              <label for="pwd">Tên Khách Hàng:</label>
+              <input type="text" class="form-control" id="tenkhachhangcm{{$bl.Idbinhluan}}" placeholder="Tên Khách Hàng" name="pswd">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Email:</label>
+              <input type="text" class="form-control" id="emailcm{{$bl.Idbinhluan}}" placeholder="Email Của Bạn" name="pswd">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Số Điện Thoại:</label>
+              <input type="text" class="form-control" id="sdtcm{{$bl.Idbinhluan}}" placeholder="Số Điện Thoại Của Bạn(Dùng để liên lạc Zalo)" name="pswd">
+            </div>
+            <button type="button" class="btn btn-primary" style="margin-left: 85%" onclick="guibinhluan1(idbinhluan={{$bl.Idbinhluan}})">Bình Luận</button>
+          </form>
+
+
+
+    </div>
+    </div>
+    </div>
+    
+</br>
+  {{end}}
+
+</div>
+<script>
+
+CKEDITOR.replace( 'noidungcm' );
+function themicon(){
+ 
+  var noidung = CKEDITOR.instances['noidungcm'].getData();
+  var anh = '<img src="'+icon+'"/>';
+ 
+  CKEDITOR.instances['noidungcm'].setData(xoathep(noidung+anh));
+
+ 
+}
+function themicon1(){
+ 
+
+ var noidung = CKEDITOR.instances['noidungcm'+idbinhluan].getData();
+  var anh = '<img src="'+icon+'"/>';
+ 
+  CKEDITOR.instances['noidungcm'+idbinhluan].setData(xoathep(noidung+anh));
+}
+
+
+function xoathep(thep){
+
+  var res = thep.replace("<p>", " ");
+  res =res.replace("</p>", " ");
+  return res;
+}
+</script>

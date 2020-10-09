@@ -1,0 +1,867 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <!-- Left Panel -->
+   
+
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống Kê </a>
+                    </li>
+                    <h3 class="menu-title">Quản Lý Thông Tin</h3><!-- /.menu-title -->
+                   
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Menu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="../../quanlysanpham">Quản Lý Sản Phẩm</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlyloaisanpham">Quản Lý Loại Sàn Phẩm</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlydonhang">Quản Lý Đơn Hàng</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlynhacungcap">Quản Lý Nhà Cung Cấp</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlynhasanxuat">Quản Lý Nhà Sản Xuất</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlybinhluan">Quản Lý Bình Luận</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlyuser">Quản Lý User</a></li>
+                           
+                         
+                        </ul>
+                    </li>
+             
+
+
+                
+                
+                
+                  
+                    <h3 class="menu-title">Quản Lý Tài Khoản</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Đăng Nhập Hoặc Đăng Xuất</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="#" style="cursor: pointer" onclick="dangxuat()">Đăng Xuất</a></li>
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="../../thaydoimatkhauquanly"> Thay Đổi Mật Khẩu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">5</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="fa fa-check"></i>
+                                <p>Server #1 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <i class="fa fa-info"></i>
+                                <p>Server #2 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Server #3 overloaded.</p>
+                            </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ti-email"></i>
+                                <span class="count bg-primary">9</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jonathan Smith</span>
+                                    <span class="time float-right">Just now</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jack Sanders</span>
+                                    <span class="time float-right">5 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Cheryl Wheeler</span>
+                                    <span class="time float-right">10 minutes ago</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-3" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Rachel Santos</span>
+                                    <span class="time float-right">15 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                                <a class="nav-link" href="#" onclick="dangxuat()"><i class="fa fa-power-off"></i> Đăng Xuất</a>
+                        </div>
+                    </div>
+
+                    <div class="language-select dropdown" id="language-select">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                            <i class="flag-icon flag-icon-us"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="language">
+                            <div class="dropdown-item">
+                                <span class="flag-icon flag-icon-fr"></span>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-es"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-us"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-it"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Table</a></li>
+                            <li class="active">Data table</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+
+
+
+                                  
+        {{ $foos := .Donhang }}
+
+  
+ 
+                                          {{range $a := $foos}}
+           
+
+
+           <div id="{{$a.Madh}}capnhat" style="position: initial;width: 100%;z-index: 999;display: none">
+        
+
+                                <div class="col-lg-6" style="width: 100%;margin-left: 25%">
+                                                                        <div class="card">
+                                                                            <div class="card-header">
+                                                                                <strong>Thêm Sản Phẩm</strong> 
+                                                                            </div>
+                                                                            <div class="card-body card-block">
+                                                                              
+  <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
+                                                        
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3"><label class=" form-control-label" for="text-input">Tên Khách Hàng </label></div>
+                                                                <div class="col-12 col-md-9"><input name="txttenkhachhang" class="form-control" id="txttenkhachhang" type="text" placeholder="Tên Nhà Sản Xuất:" value="{{$a.Ten}}"><small class="form-text text-muted"></small></div>
+                                                            </div>
+
+
+
+                                                             <div class="row form-group">
+                                                                    <div class="col col-md-3"><label class=" form-control-label" for="file-multiple-input">Họ Khách Hàng </label></div>
+                                                                    <div class="col-12 col-md-9"><input name="txtho" class="form-control-file" id="txtho" type="text" value="{{$a.Ho}}" multiple=""></div>
+                                                                </div>
+                                                                    <div class="row form-group">
+                                                                    <div class="col col-md-3"><label class=" form-control-label" for="file-multiple-input">Huyện </label></div>
+                                                                    <div class="col-12 col-md-9"><input name="huyen" class="form-control-file" id="huyen" value="{{$a.Huyen}}" type="text" multiple=""></div>
+                                                                </div>
+                                                                    <div class="row form-group">
+                                                                    <div class="col col-md-3"><label class=" form-control-label" for="file-multiple-input">Thành Phố</label></div>
+                                                                    <div class="col-12 col-md-9"><input name="thanhpho" class="form-control-file" id="thanhpho" value="{{$a.TP}}" type="text" multiple=""></div>
+                                                                </div>
+                                                                  <input type="text" value="{{$a.Madh}}" id="capnhat{{$a.Madh}}" style="display: none;" name="madh">
+
+
+
+
+                                                                    <div class="row form-group">
+                                                                    <div class="col col-md-3"><label class=" form-control-label" for="file-multiple-input">Email</label></div>
+                                                                    <div class="col-12 col-md-9"><input name="email" class="form-control-file" id="email" value="{{$a.Email}}" type="text" multiple=""></div>
+                                                                </div>
+
+                                                               <div class="row form-group">
+                                                                    <div class="col col-md-3"><label class=" form-control-label" for="file-multiple-input">Số Điện Thoại</label></div>
+                                                                    <div class="col-12 col-md-9"><input name="sdt" class="form-control-file" id="sdt" value="{{$a.Email}}" type="text" multiple=""></div>
+                                                                </div>
+
+                                                             
+                                                       
+                                                                 
+                                                                  <div class="row form-group">
+                                                                    <div class="col col-md-3"><label class=" form-control-label" for="file-multiple-input">Tình Trạng</label></div>
+                                                                    <div class="col-12 col-md-9"><select name="tinhtrang">
+                                                                      
+                                                                        
+                                                                         {{if eq  $a.Tinhtrang 0}}
+                                                                         
+                                                                         <option value="0">Chưa Giao Hàng</option>
+                                                                        <option value="1"   aria-checked="false">Đã Giao Hàng</option>
+                                                                         {{end}}
+                                                                           {{if ne  $a.Tinhtrang 0}}
+
+                                                                            <option value="1"  aria-checked="true">Đã Giao Hàng</option>
+                                                                          <option value="0">Chưa Giao Hàng</option>
+                                                                           {{end}}
+                                                                           </select></div>
+                                                                </div>
+                                                                    <div class="row form-group">
+                                                                    <div class="col col-md-3"><label class=" form-control-label" for="file-multiple-input">Ngày Cập Nhật</label></div>
+                                                                    <div class="col-12 col-md-9"><input name="date" class="form-control-file" id="date" value="{{$a.Ngaylap}}" type="date" multiple=""></div>
+                                                                </div>
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3"><label class=" form-control-label" for="textarea-input">Địa Chỉ:</label></div>
+                                                                <div class="col-12 col-md-9"><textarea name="txtdiachi" class="form-control" id="txtdiachi" placeholder="Nội Dung" rows="9">{{$a.Diachi}}</textarea></div>
+                                                            </div>
+                                                                 <div class="row form-group">
+                                                                <div class="col col-md-3"><label class=" form-control-label" for="textarea-input">Ghi Chú:</label></div>
+                                                                <div class="col-12 col-md-9"><textarea name="ghichu" class="form-control" id="ghichu" placeholder="Nội Dung" rows="9">{{$a.Note}}</textarea></div>
+                                                            </div>
+                                                           
+                                                        <button class="btn btn-primary btn-sm" type="submit" style="margin-left: 60%">
+                                                            <i class="fa fa-dot-circle-o"></i> Cập Nhật 
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm" type="reset">
+                                                            <i class="fa fa-ban"></i> Xóa Tất Cả
+                                                        </button>
+                                                    
+                                                     
+                                                                                 
+                                                                                 </form>
+                                                                            </div>
+                                                                          
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    </div>
+                                            {{end}}
+
+
+
+
+
+
+
+
+
+
+
+
+                      
+            
+                           
+  {{ $sanpham1 := .Sanpham }}
+                                        {{ $foos := .Donhang }}
+                                         {{ $hoadon1 := .Hoadon }}
+                                           {{ $hoadons1 := .Hoadons }}
+
+           {{range $b := $foos}}
+                                                {{range $hoadon := $hoadon1}}
+                                                {{if eq $hoadon.Madh $b.Madh }}
+                                             
+                                    <div id="{{$b.Madh}}"  style="position: fixed;width: 100%;z-index: 999;display:none;" align="center">
+ 
+
+
+     <div class="col-lg-8" style="margin-left: 2%">
+        <button class="btn btn-danger btn-sm" type="reset" style="margin-left: 106%" onclick="dong(idsp='{{ $b.Madh}}')">
+                                                            <i class="fa fa-times" style="font-size: 30px">Đóng Bảng</i> 
+                                                        </button>
+                                                                        <div class="card" style="width: 1500px">
+                                                                            <div class="card-header">
+                                                                                <strong>Chi Tiết Hóa Đơn</strong> 
+                                                                            </div>
+                                                                            <div class="card-body card-block">
+                                                                                <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
+                                                                                 
+                                                                           <table  style="width: 100%" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Số Lượng</th>
+                                            <th>Tổng Tiền</th>
+                                                  
+                                        </tr>
+                                    </thead>
+                                    {{$dem :=1}}
+
+                                                   {{range $i,$hoadons := $hoadons1}}
+                                                    {{if eq $hoadons.Mahd $hoadon.Mahd }}
+                                    <tbody>
+                                    
+                                        
+  
+                                      
+                                        <tr>
+                                          
+                                        
+
+                                                     {{range $sanpham := $sanpham1}}
+                                                     {{if eq $hoadons.Idsanpham $sanpham.Idsp}}
+                                            <td>{{ $sanpham.Tensanpham}}</td>
+                                            {{end}}
+                                               {{end}}
+                                            <td style="font-size: 20px">{{ $hoadons.Soluong}}</td>
+                                         <td style="font-size: 20px">{{add   (floatchuoi $hoadons.Tongtien) "1" "*"}}</td>
+                                    
+                                       
+                                            </td>
+                                        
+                                           
+                                          </tr>
+   
+                                          {{end}}
+                               {{end}}
+                                    </tbody>
+                                                         <tr>
+                                    <td  colspan="3" style="font-size: 30px;text-align: left;" >Thành Tiền</td>
+ <td id="{{$hoadon.Mahd}}"  colspan="2" style="font-size: 25px;color: red" ></td>
+
+
+                                </tr>
+                                </table>
+                              
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                   
+
+                             
+
+
+                             </div> 
+                         </div>
+                               {{end}}
+
+                               {{end}}
+
+                                  {{end}}
+
+
+
+
+
+                                            
+
+
+                                     
+                                  <button class="btn btn-success btn-sm" type="button"  onclick="ExportToExcel()" style="margin-left: 85%"><i class="fa fa-magic"></i>&nbsp; Xuất File Excel</button>
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Danh Sách Đơn Hàng</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                             <th>Mã Đơn Hàng</th>
+                                            <th>Tên Khách Hàng</th>
+                                            <th>Họ Khách Hàng</th>
+                                            <th>Địa Chỉ</th>
+
+                                               
+                                          <th>Huyện</th>
+                                          <th>Thành Phố</th>
+                                             <th>Email</th>
+
+                                             <th>Đưa Hàng Cho Nhà Vận Chuyển</th>
+                                                  <th>Tình Trạng</th>
+                                                 
+                                          <th>ghi Chú</th>
+
+                                             <th>Số Điện Thoại</th>
+                                                <th>Ngày Lập Đơn</th>
+                                                   <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                            {{ $foos := .Donhang }}
+                                     {{ $giaohang := .Giaohang }}
+
+  
+ 
+                                          {{range $a := $foos}}
+                                        <tr>
+                                                  <td style="font-size: 20px">{{ $a.Madh}}</td>
+                                            <td>{{ $a.Ten}}</td>
+                                            
+                                            <td style="font-size: 20px">{{ $a.Ho}}</td>
+                                         <td style="font-size: 20px">{{ $a.Diachi}}</td>
+                                           <td style="font-size: 20px">{{ $a.Huyen}}</td>
+                                         <td style="font-size: 20px">{{ $a.TP}}</td>
+                                              <td>{{ $a.Email}}</td>
+                                              {{if eq  $a.Tinhtrang 0}}
+                                         <td style="font-size: 20px">
+                                             <label class="switch switch-text switch-danger">
+
+                                           <label class="switch switch-text switch-danger switch-pill"><input type="checkbox" class="switch-input"  onclick ="giaohang(iddh='{{$a.Madh}}',idso='1')"   name ="{{$a.Madh}}1"> <span data-on="On" data-off="Off" class="switch-label" ></span> <span class="switch-handle"></span></label>
+                                               <div>
+                                          <span style="margin-top: 20px" id="{{ .Madh}}a">Chưa Giao Hàng</span>
+                                      </div>
+                                         {{end}}
+                                              
+                                           {{if ne  $a.Tinhtrang 0}}
+                                         <td style="font-size: 20px">
+                                            <label class="switch switch-text switch-danger switch-pill"><input type="checkbox" class="switch-input" checked="true" onclick ="giaohang(iddh='{{$a.Madh}}',idso='2')"  name ="{{$a.Madh}}2"> <span data-on="On" data-off="Off" class="switch-label" ></span> <span class="switch-handle"></span></label>
+                                                  <div>
+                                          <span style="margin-top: 20px" id="{{ .Madh}}a"> Đã Giao Hàng</span>
+                                      </div>
+
+
+                                       </td>
+                                         {{end}}
+
+                                         {{range $gh:=$giaohang}}
+                                          {{if eq $gh.Madonhang $a.Madh }}
+
+                                          {{if eq  $gh.Tinhtrang 0}}
+                                          <td style="font-size: 20px">
+                                              <label class="switch switch-text switch-danger">
+ 
+                                            <label class="switch switch-text switch-danger switch-pill"><input type="checkbox" class="switch-input"  onclick ="vanchuyen(iddh='{{$a.Madh}}',idso='1')"   name ="{{$a.Madh}}1"> <span data-on="On" data-off="Off" class="switch-label" ></span> <span class="switch-handle"></span></label>
+                                                <div>
+                                           <span style="margin-top: 20px" id="{{ $a.Madh}}b">Chưa Vận Chuyển</span>
+                                       </div>
+                                          {{end}}
+                                               
+                                            {{if ne  $gh.Tinhtrang 0}}
+                                          <td style="font-size: 20px">
+                                             <label class="switch switch-text switch-danger switch-pill"><input type="checkbox" class="switch-input" checked="true" onclick ="vanchuyen(iddh='{{$a.Madh}}',idso='2')"  name ="{{$a.Madh}}2"> <span data-on="On" data-off="Off" class="switch-label" ></span> <span class="switch-handle"></span></label>
+                                                   <div>
+                                           <span style="margin-top: 20px" id="{{ $a.Madh}}b"> Đã Vận Chuyển</span>
+                                       </div>
+ 
+ 
+                                        </td>
+                                          {{end}}
+
+
+                                          {{end}}
+                                         {{end}}
+
+                                         <td>{{ $a.Note}}</td>
+                                          <td>{{ $a.Sdt}}</td>
+                                             <td>{{ $a.Ngaylap}}</td>
+                                          <td>
+                                                <div>
+
+
+                                                        <button class="btn btn-primary btn-sm" type="submit"  onclick="chinhsua(idsp='{{ .Madh}}')">
+                                                                <i class="fa fa-edit"></i> Chỉnh Sửa
+                                                            </button>
+                                                </div>
+                                            
+                                                     <div style="margin-top: 5px">
+                                                          <button class="btn btn-primary btn-sm" type="submit" style="background-color: #00a65a" onclick="hien(idsp='{{ .Madh}}')">
+                                                                <i class="fa fa-eye"></i> Xem Chi Tiết Đơn Hàng
+                                                            </button>
+                                                     </div>
+                                                   
+                                                     <div style="margin-top: 5px">
+                                                        <button class="btn btn-danger btn-sm" type="reset" onclick="xoa(idsp='{{ .Madh}}')">
+                                                            <i class="fa fa-ban"></i> Xóa 
+                                                        </button>
+                                                        </div>
+                                            </td>
+                                          </tr>
+                                      {{end}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
+
+
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+    function reverse (s) {
+    var o = '';
+    for (var i = s.length - 1; i >= 0; i--)
+        o += s[i];
+    return o;
+  }
+function dinhdangtiente(num){
+
+   var a=reverse( num.toString());
+
+var rs='';
+   for(var i=0;i<a.length;i++){
+      
+      if(i%3==0&&i!=0){
+
+        rs+=',';
+
+      }
+   rs+= a.charAt(i);
+
+   }
+   return reverse(rs) ;
+}
+ var a=0;
+
+     {{range $hoadon := $hoadon1}}
+
+a=0;
+         {{range $i,$hoadons := $hoadons1}}
+   {{if eq $hoadons.Mahd $hoadon.Mahd }}
+
+
+a+={{$hoadons.Tongtien}};
+$('#'+'{{$hoadon.Mahd}}').html( dinhdangtiente(a)+" VNĐ");
+
+       {{end}}
+       {{end}}
+
+
+          {{end}}
+
+
+    function giaohang(){
+
+       
+                // Khai báo tham số
+                var checkbox = document.getElementsByName(iddh+idso);
+            
+           
+               
+                // Lặp qua từng checkbox để lấy giá trị
+                for (var i = 0; i < checkbox.length; i++){
+
+                    if (checkbox[i].checked === true){
+
+                        $('#'+iddh+'a').html('Đã Giao Hàng');
+                        $.get('#',{'iddh':iddh,'tt':'1'});
+
+                   
+                       
+                    }else{
+                       
+  $('#'+iddh+'a').html('Chưa Giao Hàng');
+    $.get('#',{'iddh':iddh,'tt':'0'});
+    
+                    }
+
+
+                }
+                 
+                // In ra kết quả
+               
+         
+    }
+
+
+    function vanchuyen(){
+
+       
+// Khai báo tham số
+var checkbox = document.getElementsByName(iddh+idso);
+
+
+
+// Lặp qua từng checkbox để lấy giá trị
+for (var i = 0; i < checkbox.length; i++){
+
+    if (checkbox[i].checked === true){
+
+        $('#'+iddh+'b').html('Đã Vận Chuyển');
+        $.get('#',{'mavanchuyen':iddh,'tt1':'1'});
+
+   
+       
+    }else{
+       
+$('#'+iddh+'b').html('Chưa Vận Chuyển');
+$.get('#',{'mavanchuyen':iddh,'tt1':'0'});
+
+    }
+
+
+}
+ 
+// In ra kết quả
+
+
+}
+
+
+
+
+
+var dem=0;
+    function hien(){
+    scrolltop();
+    {{ $foos := .Donhang }}
+    {{range $a:=$foos}}
+    var idsp1 ='{{$a.Madh}}';
+    $('#'+idsp1).css('display','none');
+    {{end}}
+  
+ 
+    $('#'+idsp).css('display','block');
+      
+}
+var demcs=0;
+function chinhsua(){
+    scrolltop();
+   {{ $foos := .Donhang }}
+
+  {{range $a := $foos}}    
+  var idsp1 ='{{$a.Madh}}';
+    $('#'+idsp1+"capnhat").css('display','none');
+    {{end}}
+    $('#themsanpham').css('display','none');
+    $('#'+idsp+"capnhat").css('display','block');
+
+}
+function dong(){
+        $('#themsanpham').css('display','none');
+}
+function xoa()
+          {
+               $.get('#',{haha:idsp},function (params) {
+                   
+                   alert('xóa thành công');
+                   window.location=""
+               });
+               {
+  
+               }
+          }
+          function scrolltop() 
+            {
+                var id_button = '#scrolltop';
+
+                // Kéo xuống khoảng cách 220px thì xuất hiện button
+                var offset = 220;
+
+                // THời gian di trượt là 0.5 giây
+                var duration = 500;
+
+                // Thêm vào sự kiện scroll của window, nghĩa là lúc trượt sẽ
+                // kiểm tra sự ẩn hiện của button
+                jQuery(window).scroll(function() {
+                    if (jQuery(this).scrollTop() > offset) {
+                        jQuery(id_button).fadeIn(duration);
+                    } else {
+                        jQuery(id_button).fadeOut(duration);
+                    }
+                });
+
+                // Thêm sự kiện click vào button để khi click là trượt lên top
+              
+                    event.preventDefault();
+                    jQuery('html, body').animate({scrollTop: 0}, duration);
+                    return false;
+                
+            }
+            function dong(){
+                $('#'+idsp).css('display','none');
+            }
+</script>
+<script >
+    function ExportToExcel()
+    {
+        var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
+        var textRange; var j=0;
+        tab = document.getElementById('bootstrap-data-table-export'); // id of table
+    
+        for(j = 0 ; j < tab.rows.length ; j++) 
+        {     
+            tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+            //tab_text=tab_text+"</tr>";
+        }
+    
+        tab_text=tab_text+"</table>";
+        tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+        tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+        tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+    
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE "); 
+    
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        {
+            txtArea1.document.open("txt/html","replace");
+            txtArea1.document.write(tab_text);
+            txtArea1.document.close();
+            txtArea1.focus(); 
+            sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+        }  
+        else                 //other browser not tested on IE 11
+            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+    
+        return (sa);
+    }
+
+
+    function dangxuat(){
+    $.post('../../xacnhantaikhoan',{'dangxuat':1},function(data){
+       
+            window.location="";
+        
+      
+    });
+}
+        </script>

@@ -1,0 +1,849 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
+
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống Kê </a>
+                    </li>
+                    <h3 class="menu-title">Quản Lý Thông Tin</h3><!-- /.menu-title -->
+                   
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Menu</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="../../quanlysanpham">Quản Lý Sản Phẩm</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlyloaisanpham">Quản Lý Loại Sàn Phẩm</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlydonhang">Quản Lý Đơn Hàng</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlynhacungcap">Quản Lý Nhà Cung Cấp</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlynhasanxuat">Quản Lý Nhà Sản Xuất</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlybinhluan">Quản Lý Bình Luận</a></li>
+                            <li><i class="fa fa-table"></i><a href="../../quanlyuser">Quản Lý User</a></li>
+                           
+                         
+                        </ul>
+                    </li>
+             
+
+
+                
+                
+                
+                  
+                    <h3 class="menu-title">Quản Lý Tài Khoản</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Đăng Nhập Hoặc Đăng Xuất</a>
+                        <ul class="sub-menu children dropdown-menu">
+                                <li><i class="menu-icon fa fa-sign-in"></i><a href="#" style="cursor: pointer" onclick="dangxuat()">Đăng Xuất</a></li>
+                                <li><i class="menu-icon fa fa-sign-in"></i><a href="../../thaydoimatkhauquanly">Đổi Mật Khẩu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">5</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="fa fa-check"></i>
+                                <p>Server #1 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <i class="fa fa-info"></i>
+                                <p>Server #2 overloaded.</p>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <i class="fa fa-warning"></i>
+                                <p>Server #3 overloaded.</p>
+                            </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="message"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ti-email"></i>
+                                <span class="count bg-primary">9</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jonathan Smith</span>
+                                    <span class="time float-right">Just now</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Jack Sanders</span>
+                                    <span class="time float-right">5 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Cheryl Wheeler</span>
+                                    <span class="time float-right">10 minutes ago</span>
+                                        <p>Hello, this is an example msg</p>
+                                </span>
+                            </a>
+                                <a class="dropdown-item media bg-flat-color-3" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
+                                <span class="message media-body">
+                                    <span class="name float-left">Rachel Santos</span>
+                                    <span class="time float-right">15 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </span>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                                <a class="nav-link" href="#" onclick="dangxuat()"><i class="fa fa-power-off"></i> Đăng Xuất</a>
+                        </div>
+                    </div>
+
+                    <div class="language-select dropdown" id="language-select">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                            <i class="flag-icon flag-icon-us"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="language">
+                            <div class="dropdown-item">
+                                <span class="flag-icon flag-icon-fr"></span>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-es"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-us"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-it"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3">
+
+            <div class="col-sm-12">
+                <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                    <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-flat-color-1">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count">{{.Tongluongtruycap}}</span>
+                        </h4>
+                        <p class="text-light">Số Lượng Người Đã Truy Cập</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart1"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-flat-color-2">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton2" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Xem Chi Tiết</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count">{{.Tongsoluongsanpham}}</span>
+                        </h4>
+                        <p class="text-light">Tổng Số Lượng Sản Phẩm</p>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id="widgetChart2"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-flat-color-3">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton3" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Xem Thống Kê</a>
+                                    <a class="dropdown-item" href="#">Xem Chi Tiết</a>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count">{{.Tongsoluongdonhangtrongthang}} </span>
+                        </h4>
+                        <p class="text-light">Tổng Đơn Hàng Trong Tháng  {{.Thang}}</p>
+
+                    </div>
+
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-flat-color-4">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton4" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                <div class="dropdown-menu-content">
+                                    <a class="dropdown-item" href="#">Xem Chi Tiết</a>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="mb-0">
+                            <span class="count">{{.Tongsoluongkhachhang}}</span>
+                        </h4>
+                        <p class="text-light">Số Lượng User</p>
+
+                        <div class="chart-wrapper px-3" style="height:70px;" height="70">
+                            <canvas id="widgetChart4"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+
+
+
+        
+
+
+
+            <div class="col-xl-3 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Tổng Tiền Thu Trong Tháng {{.Thang}}</div>
+                                <div class="stat-digit">{{.Tongtientrongthang}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-3 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Khách Hàng Mới</div>
+                                <div class="stat-digit">{{.Tongsoluongusermoi}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    
+            <div class="col-xl-3 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-layout-grid2  text-primary border-primary"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text" style="font-size: 10"> SP Đã Bán Trong Tháng {{.Thang}}</div>
+                                <div class="stat-digit">{{.Tongsanphamdabantrongthang}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-one">
+                                <div class="stat-icon dib"><i class="ti-layout-grid2  text-primary border-primary"></i></div>
+                                <div class="stat-content dib">
+                                    <div class="stat-text" style="font-size: 10"> Để Cho Vui</div>
+                                    <div class="stat-digit">{{.Tongsanphamdabantrongthang}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3">Biểu Đồ Tổng Số Lượng Khách Hàng Truy Cập  Trong 12  Tháng </h4>
+                                <div id="tabs" style="height: 360px">
+                                        <ul>
+                                        <li ><a href="#tabs-1" style="font-size: 12px">Xem </a></li>
+                                        <li ><a href="#tabs-2"  style="font-size: 12px">Xem Chi Tiết</a></li>
+                                        </ul>
+                                        <div id="tabs-1" style="height: 300px">
+                                        <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+                                        </div>
+                                        <div id="tabs-2" style="height: 300px">
+                                        <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+                                        </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3"> Biểu Đồ Tổng Số Lượng Khách Hàng Truy Cập  Trong 10  Năm Gần Đây</h4>
+                                <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3">Biểu Đồ Tổng Số Lượng Đơn Hàng Được Trong 12  Tháng </h4>
+                                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3">Biểu Đồ Tổng Số Lượng Đơn Hàng Bán Được Trong 10 năm gần đây nhất </h4>
+                                <canvas id="line-chart" width="800" height="450"></canvas>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="content mt-3">
+                <div class="animated fadeIn">
+                    <div class="row">
+
+                
+
+
+                            <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <strong class="card-title">Top 10 Sản Phẩm Bán Chạy Nhất</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                            <th scope="col">STT</th>
+                                                            <th scope="col">Tên Sản Phẩm </th>
+                                                            <th scope="col">Lượt Mua</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                        {{range $i,$a:=.Sanphammuanhieunhat}}
+                                                        <tr>
+                                                            <th scope="row">{{$i}}</th>
+                                                         
+                                                            <td>{{$a.Ten}}</td>
+                                                            <td>{{$a.Giatri}}</td>
+                                                        </tr>
+                                                        {{end}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">Top  Sản Phẩm Được Bình Luận  Nhất</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">STT</th>
+                                                <th scope="col">Tên Sản Phẩm</th>
+                                                <th scope="col">Lượt Bình Luận</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                {{range $i,$a:=.Sanphambinhluannhieunhat}}
+                                                <tr>
+                                                    <th scope="row">{{$i}}</th>
+                                                 
+                                                    <td>{{$a.Ten}}</td>
+                                                    <td>{{$a.Giatri}}</td>
+                                                </tr>
+                                                {{end}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">Top 10 Sản Phẩm Được Xem Nhiều Nhất</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">STT</th>
+                                                <th scope="col">Tên Sản Phẩm </th>
+                                                <th scope="col">Lượt Xem</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                {{range $i,$a:=.Sanphamxemnhieunhat}}
+                                            <tr>
+                                                <th scope="row">{{$i}}</th>
+                                             
+                                                <td>{{$a.Ten}}</td>
+                                                <td>{{$a.Giatri}}</td>
+                                            </tr>
+                                            {{end}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">Top 10 Sản Phẩm Được Đánh Giá Tốt Nhất</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col">Tên Sản Phẩm </th>
+                                                    <th scope="col">Đánh Giá</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                {{range $i,$a:=.Sanphambinhchon}}
+                                                <tr>
+                                                    <th scope="row">{{$i}}</th>
+                                                 
+                                                    <td>{{$a.Ten}}</td>
+                                                    <td>{{$a.Giatri}}</td>
+                                                </tr>
+                                                {{end}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div><!-- .animated -->
+            </div>
+
+
+
+
+
+
+
+          
+         <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+
+    <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/widgets.js"></script>
+    <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+
+
+
+
+        
+    </script>
+
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        
+    bieudodong();
+    var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light1", // "light2", "dark1", "dark2"
+        animationEnabled: false, // change to true		
+        title:{
+            text: ""
+        },
+        data: [
+        {
+            // Change type to "bar", "area", "spline", "pie",etc.
+            type: "column",
+            dataPoints: [
+                {{range $a:=.Mangtheothangdonhang}}
+                { label: "Tháng "+'{{$a.Ten}}',  y: {{$a.Giatri}}  },
+                {{end}}
+              
+            ]
+        }
+        ]
+    });
+    chart.render();
+    
+    }
+
+    var mang=[];
+    var manggt=[];
+ {{range $a:=.Mangtheonamdonhang}}
+    var newLength = mang.push('{{$a.Ten}}');
+    var newLength = manggt.push({{$a.Giatri}});
+    {{end}}
+
+    new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: mang,
+    datasets: [{ 
+        data: manggt,
+        label: "Sản Phẩm",
+        borderColor: "#3e95cd",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: ''
+    }
+  }
+});
+
+
+
+function bieudodong(){
+    
+    var options1 = {
+	animationEnabled: true,
+	title: {
+		text: ""
+	},
+	axisX: {
+		labelFontSize: 14
+	},
+	axisY: {
+		labelFontSize:  14
+	},
+	data: [{
+		type: "spline", //change it to line, area, bar, pie, etc
+		dataPoints: [
+
+            {{range $a:=.Nguoidungtheothang}}
+			{label: "tháng {{$a.Ten}}", y: {{$a.Giatri}} },
+			{{end}}
+		]
+	}]
+};
+var options2 = {
+	title: {
+		text: ""
+	},
+	axisX: {
+		labelFontSize: 14
+	},
+	axisY: {
+		labelFontSize: 14
+	},
+	data: [{
+		type: "splineArea", //change it to line, area, bar, pie, etc
+		dataPoints: [
+        {{range $a:=.Nguoidungtheothang}}
+			{label: "tháng {{$a.Ten}}", y: {{$a.Giatri}} },
+			{{end}}
+		]
+	}]
+};
+$("#tabs").tabs({
+	create: function (event, ui) {
+		//Render Charts after tabs have been created.
+		$("#chartContainer1").CanvasJSChart(options1);
+		$("#chartContainer2").CanvasJSChart(options2);
+	},
+	activate: function (event, ui) {
+		//Updates the chart to its container size if it has changed.
+		ui.newPanel.children().first().CanvasJSChart().render();
+	}
+});
+dongtemp();
+}
+
+
+function dongtemp(){
+
+    var chart = new CanvasJS.Chart("chartContainer3", {
+	animationEnabled: true,
+	zoomEnabled: true,
+	theme: "dark2",
+	title:{
+		text: ""
+	},
+	axisX:{
+		title: "Year",
+		valueFormatString: "####",
+		interval: 2
+	},
+	axisY:{
+		logarithmic: true, //change it to false
+		title: "Lượng Truy Cập Người Dùng",
+		titleFontColor: "#6D78AD",
+		lineColor: "#6D78AD",
+		gridThickness: 0,
+		lineThickness: 1,
+		includeZero: false,
+		labelFormatter: addSymbols
+	},
+	
+	legend:{
+		verticalAlign: "top",
+		fontSize: 16,
+		dockInsidePlotArea: true
+	},
+	data: [{
+		type: "line",
+		xValueFormatString: "####",
+		showInLegend: true,
+		name: "Chỉ Số",
+		dataPoints: [
+        {{range $a:=.Nguoidungtheonam}}
+			{ x: {{$a.Ten}}, y: {{$a.Giatri}} },
+			{{end}}
+		]
+	}]
+});
+chart.render();
+
+function addSymbols(e){
+	var suffixes = ["", "K", "M", "B"];
+
+	var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
+	if(order > suffixes.length - 1)
+		order = suffixes.length - 1;
+
+	var suffix = suffixes[order];
+	return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
+}
+}
+
+
+function dangxuat(){
+    $.post('../../xacnhantaikhoan',{'dangxuat':1},function(data){
+       
+            window.location="";
+        
+      
+    });
+}
+
+
+    </script>
+
+
+</html>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+

@@ -1,0 +1,19 @@
+</br>
+{{range $bls :=.Binhluans}}
+
+<div class="media p-3">
+<img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
+<div class="media-body">
+  <h4>{{$bls.Tenkhachhang}} <small><i>{{$bls.Ngaycapnhat}} </i></small></h4>
+ {{$bls.Noidung}}
+</div>
+</div>  
+</div>
+</div>
+<div style="color: blue;cursor: pointer;margin-left: 10%" onclick="traloi(idbinhluan={{.Idbinhluan}},tenkhachhang='{{$bls.Tenkhachhang}}')"> Trả Lời | Báo Cáo</div>
+
+
+
+</br>
+
+{{end}}

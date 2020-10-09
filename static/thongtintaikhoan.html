@@ -1,0 +1,1356 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<!-- shop-left-sidebar31:47-->
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Quản Lý Tài Khoản</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+        <!-- Material Design Iconic Font-V2.2.0 -->
+        <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <!-- Font Awesome Stars-->
+        <link rel="stylesheet" href="css/fontawesome-stars.css">
+        <!-- Meanmenu CSS -->
+        <link rel="stylesheet" href="css/meanmenu.css">
+        <!-- owl carousel CSS -->
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <!-- Slick Carousel CSS -->
+        <link rel="stylesheet" href="css/slick.css">
+        <!-- Animate CSS -->
+        <link rel="stylesheet" href="css/animate.css">
+        <!-- Jquery-ui CSS -->
+        <link rel="stylesheet" href="css/jquery-ui.min.css">
+        <!-- Venobox CSS -->
+        <link rel="stylesheet" href="css/venobox.css">
+        <!-- Nice Select CSS -->
+        <link rel="stylesheet" href="css/nice-select.css">
+        <!-- Magnific Popup CSS -->
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <!-- Bootstrap V4.1.3 Fremwork CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Helper CSS -->
+        <link rel="stylesheet" href="css/helper.css">
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" href="style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="css/responsive.css">
+        <!-- Modernizr js -->
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <div style="position: fixed;width: 100%;height: 100%;background-color: cornsilk;z-index: 100000000;display: none;background-image:url('http://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-hoa-dao-dep-2_042447429.jpg')" id="khungdangnhap" ></div>
+
+    <body>
+
+            <div  id="thongbao1" style="position: fixed;width: 50%;z-index: 1000;margin-top: 5%;margin-left: 25%;display: none">
+                   
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="smallmodalLabel">Lý Do Hủy Đơn</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="dong()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                           <input type="text" style="border-radius: 5px;border: 1px blue solid" id="lydohuy">
+                        </div>
+                        <div class="modal-body">
+                                <input type="button" value="Hủy Đơn" style="background-color: red;cursor: pointer;" onclick="thuchienhuy()">
+                             </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-primary" onclick="dong()"> Đóng</button>
+                        </div>
+                    </div>
+               
+            </div>
+            <div id="hienthongbao" style="position: fixed;width: 30%;margin-left: 35%;z-index: 999999999999999999999999;display: none;margin-top: 3%" >
+                    <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                        <span class="badge badge-pill badge-success">Success</span>
+                       Thêm Sản Phẩm Thành Công
+                        <button class="close" aria-label="Close" type="button" data-dismiss="alert">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                    </div>
+            </div>
+
+          
+
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+            <header id="loadheader">
+
+                <!-- Begin Header Top Area -->
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Begin Header Top Left Area -->
+                            <div class="col-lg-3 col-md-4">
+                                <div class="header-top-left">
+                                    <ul class="phone-wrap">
+                                        <li><span>Hotline:</span><a style="cursor: pointer" >0944970893</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Header Top Left Area End Here -->
+                            <!-- Begin Header Top Right Area -->
+                            <div class="col-lg-9 col-md-8">
+                                <div class="header-top-right">
+                                    <ul class="ht-menu">
+                                        <!-- Begin Setting Area -->
+                                        <li>
+                                            <div class="ht-setting-trigger"><span>Quản Lý Tài Khoản</span></div>
+                                            <div class="setting ht-setting">
+                                                <ul class="ht-setting-list" >
+                                                    {{if ne .Username "" }}
+                                                    <li><a href="checkout.html">Xin Chào {{.Username}}</a></li>
+                                                    <li><a style="cursor: pointer" onclick="dangxuat()" >Đăng Xuất</a></li>
+                                                    {{end}}
+                                                    {{if eq .Username  "" }}
+                                                    <li><a style="cursor: pointer" onclick="khungdangnhap()">Đăng Nhập Tài Khoản</a></li>
+                                                    <li><a href="../../dangnhap?#">Đăng Ký Tài Khoản</a></li>
+                                                    {{end}}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <!-- Setting Area End Here -->
+                                        <!-- Begin Currency Area -->
+                                        <li>
+                                            <span class="currency-selector-wrapper">Loại Tiền :</span>
+                                            <div class="ht-currency-trigger"><span>Việt Nam Đồng</span></div>
+                                            <div class="currency ht-currency">
+                                                <ul class="ht-setting-list">
+                                                    <li><a style="cursor: pointer" >VNĐ</a></li>
+                                                  
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <!-- Currency Area End Here -->
+                                        <!-- Begin Language Area -->
+                                        <li>
+                                            <span class="language-selector-wrapper">Ngôn Ngữ :</span>
+                                            <div class="ht-language-trigger"><span>Việt Nam</span></div>
+                                            <div class="language ht-language">
+                                                <ul class="ht-setting-list">
+                                                    <li class="active"><a style="cursor: pointer" ><img src="https://image.flaticon.com/icons/svg/581/581047.svg" width="30px" height="50px" alt="">Việt Nam</a></li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <!-- Language Area End Here -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Header Top Right Area End Here -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Header Top Area End Here -->
+                <!-- Begin Header Middle Area -->
+                <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Begin Header Logo Area -->
+                            <div class="col-lg-3">
+                                <div class="logo pb-sm-30 pb-xs-30">
+                                    <a href="../../" style="color: #e83e8c;font-size: 40px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                                        Mỹ Phẩm JNN
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Header Logo Area End Here -->
+                            <!-- Begin Header Middle Right Area -->
+                            <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                                <!-- Begin Header Middle Searchbox Area -->
+                                <form action="../../loaisanpham" class="hm-searchbox" method="GET">
+                                    <select class="nice-select select-search-category" name="idloaisanpham"> 
+                                        <option value="0">Tất Cả Sản Phẩm</option>   
+                                        {{range $i, $e := .Loaisanpham  }}                      
+                                        <option value="{{$e.Idloaisp}}">{{$e.Tenloaisanpham}}</option>    
+                                        {{end}}                 
+                                       
+                                    </select>
+                                    <input type="text" placeholder="Nhập Tên Sản Phẩm Cần Tìm Kiếm ..." name="q">
+                                    <button class="li-btn" type="submit" style="background-color: #e83e8c"><i class="fa fa-search"></i></button>
+                                </form>
+                                <!-- Header Middle Searchbox Area End Here -->
+                                <!-- Begin Header Middle Right Area -->
+                                <div class="header-middle-right">
+                                    <ul class="hm-menu">
+                                        <!-- Begin Header Middle Wishlist Area -->
+                                      
+                                        <!-- Header Middle Wishlist Area End Here -->
+                                        <!-- Begin Header Mini Cart Area -->
+                                        <li class="hm-minicart">
+                                            <div class="hm-minicart-trigger">
+                                                <span class="item-icon"></span>
+                                                <span class="item-text">Giỏ Hàng 
+                                                    <span class="cart-item-count" id='soluong'></span>
+                                                </span>
+                                            </div>
+                                            <span></span>
+                                            <div class="minicart">
+                                                <ul class="minicart-product-list">
+                                                   <div id="cartmini"></div>
+                                                </ul>
+                                                <p class="minicart-total"> <span></span></p>
+                                                <div class="minicart-button">
+                                                    <a href="../../giohangcuatoi" class="li-button li-button-fullwidth li-button-dark">
+                                                        <span>XEM GIỎ HÀNG</span>
+                                                    </a>
+                                                    <a href="../../thanhtoan" class="li-button li-button-fullwidth">
+                                                        <span>THANH TOÁN</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- Header Mini Cart Area End Here -->
+                                    </ul>
+                                </div>
+                                <!-- Header Middle Right Area End Here -->
+                            </div>
+                            <!-- Header Middle Right Area End Here -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Header Middle Area End Here -->
+                <!-- Begin Header Bottom Area -->
+                <div class="header-bottom header-sticky d-none d-lg-block d-xl-block" style="background-color: #e83e8c ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Begin Header Bottom Menu Area -->
+                                <div class="hb-menu" >
+                                    <nav>
+                                        <ul>
+                                            <li class="dropdown-holder" ><a href="../../trangchu" >Trang Chủ</a>
+                                                <!-- <ul class="hb-dropdown">
+                                                    <li class="active"><a href="index.html">Home One</a></li>
+                                                    <li><a href="index-2.html">Home Two</a></li>
+                                                    <li><a href="index-3.html">Home Three</a></li>
+                                                    <li><a href="index-4.html">Home Four</a></li>
+                                                </ul> -->
+                                            </li>
+                                            <li class="megamenu-holder"><a style="cursor: pointer">Shop</a>
+                                                <ul class="megamenu hb-megamenu">
+                                                    <li><a href="#">Loại Sản Phẩm</a>
+                                                        <ul>
+                                                                {{range $i, $e := .Loaisanpham  }}
+                                                                 {{ if le $i 5}}
+                                                                <li><a href="../../loaisanpham?idloaisanpham={{$e.Idloaisp}}">{{$e.Tenloaisanpham}}</a></li>
+                                                                {{end}}
+                                                                {{end}}
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="single-product-gallery-left.html"></a>
+                                                        <ul>
+                                                                {{range $i, $e := .Loaisanpham  }}
+                                                                {{ if gt $i 5}}
+                                                                {{ if le $i 12}}
+                                                               <li><a href="../../loaisanpham?idloaisanpham={{$e.Idloaisp}}">{{$e.Tenloaisanpham}}</a></li>
+                                                               {{end}}
+                                                               {{end}}
+                                                               {{end}}
+                                                           
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="single-product.html"></a>
+                                                        <ul>
+                                                                {{range $i, $e := .Loaisanpham  }}
+                                                                {{ if gt $i 11 }}
+                                                               <li><a href="../../loaisanpham?idloaisanpham={{$e.Idloaisp}}">{{$e.Tenloaisanpham}}</a></li>
+                                                               {{end}}
+                                                               {{end}}
+                                                           
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="../..//thongtinvechungtoi" >Thông Tin Về Chúng Tôi.</a></li>
+                                            <li style="margin-left: 0.1%"><a href="../../lienhechungtoi" > Liên Hệ</a></li>
+                                            <li style="left: 0.7%"><a href="../../quanlytaikhoan">Tài Khoản</a></li>
+                                            <li><a href="../../giohangcuatoi">Giỏ Hàng</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Header Bottom Menu Area End Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Header Bottom Area End Here -->
+                <!-- Begin Mobile Menu Area -->
+                <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+                    <div class="container"> 
+                        <div class="row">
+                            <div class="mobile-menu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile Menu Area End Here -->
+            
+                    </header>
+            <!-- Header Area End Here -->
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Quản Lý Tài Khoản</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Li's Content Wraper Area -->
+            <div class="content-wraper pt-60 pb-60 pt-sm-30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 order-1 order-lg-2">
+                            <!-- Begin Li's Banner Area -->
+                            
+                            <!-- Li's Banner Area End Here -->
+                            <!-- shop-top-bar start -->
+                         
+                            <!-- shop-top-bar end -->
+                            <!-- shop-products-wrapper start -->
+                            <div class="shop-products-wrapper" style="width: auto">
+                                    <div class="tab-content">
+                                        <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
+                                            <div class="product-area shop-product-area">
+
+                                                
+                                                    <div class="row" style="display: none" id="doimatkhau">
+                                                            <div class="col " style="width: auto">
+                                                                <section class="card">
+                                                                    <div class="card-body text-secondary">
+
+
+
+                                                                            <form action="#" style="width: auto" >
+                                                                                    <div class="login-form">
+                                                                                        <h4 class="login-title">Thay Đổi Mật Khẩu</h4>
+                                                                                        <div class="row">
+                                                                                     
+                                                                                            <div class="col-md-12 col-12 mb-20">
+                                                                                                <label>Mật Khẩu Cũ</label>
+                                                                                                <label id="thongbaomatkhau" style="color: red"></label>
+                                                                                                <input class="mb-0"  type="password" id="matkhaucu" placeholder="Mật Khẩu Cũ">
+                                                                                            </div>
+                                                                                            <div class="col-12 mb-20">
+                                                                                                <label>Mật Khẩu Mới</label>
+                                                                                                <input class="mb-0" type="password" name="matkhau" id="matkhau" onkeyup="kiemtramatkhau()" placeholder="Mật Khẩu">
+                                                                                            </div>
+                                                                                           
+                                                                                            <div class="col-12 mb-20">
+                                                                                                    <label>Nhập Lại Mật Khẩu</label>
+                                                                                                    <label id="thongbao" style="color: red"></label>
+                                                                                                    <input class="mb-0" type="password"  name="matkhaumoi" onkeyup="kiemtramatkhau()" id="matkhau1" placeholder="Nhập Lại Mật Khẩu">
+                                                                                                </div>
+                                                                                         <script>
+                                                                                         function kiemtramatkhau(){
+                                                                                             if($('#matkhau').val()!=$('#matkhau1').val()){
+                                                                                                 $('#thongbao').html('Mật Khẩu Không Trùng Khớp');
+                                                                                                 $('#matkhau1').css('border-color','red');
+                                                                                             }else{
+                                                                                                $('#thongbao').html('');
+                                                                                                 $('#matkhau1').css('border-color','Black'); 
+                                                                                             }
+                                                                                         }
+                                                                                         </script>
+                                                                                            
+                                                                                            <div class="col-md-12">
+                                                                                                <input type="button" class="register-button mt-0" style="width: auto;margin-left: 69%" onclick="thaydoimathau()" value="Thay Đổi ">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </form>
+                                                                    </div>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="display: block;position: fixed;width: auto;z-index: 9999999999999;overflow: auto;margin-left: 0%;opacity: 1;margin-top: -16%;display: none" id="diachi">
+                    
+                                                                <div class="col-lg-6 col-12" style="background-image:url('http://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-hoa-dao-dep-2_042447429.jpg')">
+                                                                        <form action="#" style="margin-left: 0%;">
+                                                                            <div class="checkbox-form">
+                                                                                <div style="color: brown;display: none" id="thongbao"></div>
+                                                                                <h3 style="margin-top: 10px">CHI TIẾT THANH TOÁN</h3>
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="country-select clearfix">
+                                                                                            <label>Đất Nước <span class="required">*</span></label>
+                                                                                            <select class="nice-select wide" name="datnuoc">
+                                                                                              <option data-display="Việt Nam">Việt Nam</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <input  type="text" value="0" name="capnhatdiachigiaohang" style="display: none">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="checkout-form-list">
+                                                                                            <label>Tên Khách Hàng<span class="required">*</span></label>
+                                                                                            <input placeholder="" type="text"  name="ten">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="checkout-form-list">
+                                                                                            <label>Họ Và Chữ Lót <span class="required">*</span></label>
+                                                                                            <input placeholder="" type="text"  name="ho">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="checkout-form-list">
+                                                                                            <label>Địa Chỉ Nhận Hàng (Bắt Buộc)  <span class="required">*</span></label>
+                                                                                            <input placeholder="Ví dụ:285 CMT8, Tòa nhà Viettel, phường 12, quận 10, HCM"  name="diachi" type="text">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="checkout-form-list">
+                                                                                            <div class="country-select clearfix">
+                                                                                                <label>Thành Phố (Bắt Buộc) <span class="required">*</span></label>
+                                                                                                <select class="nice-select wide" onchange="kiemtra()" name="thanhpho">
+                                                                                                  <option data-display="Hồ Chí Minh" value="1">Thành Phố Hồ Chí Minh</option>
+                                                                                                  <option  value="0">Các Tỉnh Thành Khác</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="checkout-form-list">
+                                                                                            <label>Quận  / Huyện <span class="required">*</span></label>
+                                                                                            <input placeholder="" name="huyen"type="text">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="checkout-form-list">
+                                                                                            <label>Email (có thê bỏ trống)  <span class="required">*</span></label>
+                                                                                            <input placeholder="" name="email" type="email">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="checkout-form-list">
+                                                                                            <label>Số Điện Thoại (Bắt Buộc)  <span class="required">*</span></label>
+                                                                                            <input type="text" name="sdt">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                   
+                                                                                </div>
+                                                                                <div class="different-address">
+                                                                                              
+                                                                                    <div class="order-notes">
+                                                                                            <div class="checkout-form-list">
+                                                                                               <input value="Cập Nhật" style="width: 30%;background-color: forestgreen;color: white;border-radius: 5px;text-align: center;cursor: pointer;margin-left: 30%" type="submit">
+                                                                                               <input value="Đóng" style="width: 30%;background-color: red;color: white;border-radius: 5px;text-align: center;cursor: pointer;" type="button"  onclick="dongdiachi()">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                    
+                                                </div>
+                                            </br>
+                                            <div class="media" id="thongtintaikhoan" style="display: none">
+                                                <img src="https://www.w3schools.com/bootstrap4/img_avatar1.png" class="align-self-start mr-3" style="width:60px" >
+                                                <div class="media-body">
+                                                    {{range $a:=.Taikhoan}}
+                                                    <h4>Xin Chào  :{{$a.Tennguoidung}} </h4>
+                                                </br>
+                                                  <div style="margin-left: 10%">
+
+
+                                                        <p>Tên :{{$a.Tennguoidung}} </p>        
+                                                        <p> Họ:{{$a.Ho}}   </p>
+                                          
+                                                        <p>Email :     {{$a.Email}}      </p>
+                                                       
+                                                        {{end}}
+                                                    </br>
+                                                        {{range $a:=.Diachigiaohang}}
+                                                    </br>
+                                                        <div>Địa Chỉ Nhận Hàng:</div>
+                                                    </br>
+                                                        <div>Tên Khách Hàng : {{$a.Tenkhachhang}}</div>
+                                                    </br>
+                                                        <div>Họ:{{$a.Hokhachhang}}</div>
+                                                    </br>
+                                                        <div>Thành Phố :{{$a.Thanhpho}}</div>
+                                                    </br>
+                                                        <div>Huyện:{{$a.Huyen}}</div>
+                                                    </br>
+                                                        <div>Địa Chỉ :{{$a.Diachi}}</div>
+                                                    </br>
+
+                                                        <div>Số Điện Thoại :{{$a.Sodienthoai}}</div>
+                                                    </br>
+                                                        {{end}}
+                                                        <p></p>
+                                                  </br>
+                                                        <input type="button" value="Cập Nhật Địa Chỉ Nhận Hàng " style="width: auto;background-color: seagreen;border: 1px solid;color:white;cursor: pointer;" onclick="modiachi()">
+                                                  </div>
+                                                </div>
+                                              </div>
+
+
+                                                    <div class="content mt-3"  style="width: auto" id="donhang">
+                                                            <div class="animated fadeIn">
+                                                                <div class="row">
+                                                
+                                                                    <div class="col-md-12" style="width: auto">
+                                                                        <div class="card">
+                                                                            <div class="card-header">
+                                                                                <strong class="card-title">Quản Lý Đơn Hàng</strong>
+                                                                            </div>
+                                                                            <div class="card-body">
+                                                                                {{$sp :=.Sanpham}}
+                                                                                    {{ $donhang1 := .Donhang}} 
+                                                                                    {{ $donhangmn := .Itemhoadon}} 
+                                                                     {{range $hoadon := .Hoadon}}
+                                                                      {{if eq .Iduser  $hoadon.Iduser }}
+                                                                      {{range $donhang :=$donhang1}}
+                                                                      {{if eq $donhang.Madh  $hoadon.Madh }}
+                                                                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                                                                    <thead>
+                                                                                            <tr>
+                                                                                                    <th>Mã Đơn Hàng</th>
+                                                                                                    <th>Tên Khách Hàng</th>
+                                                                                                    <th>Địa Chỉ Nhận Hàng</th>
+                                                                                                    <th>Email</th>
+                                                                                                    <th>Số Điện Thoại</th>
+                                                                                                    <th>Ghi Chú </th>
+                                                                                                    <th>Ngày Lập</th>
+                                                                                                    <th>Tình Trạng</th>
+                                                                                                    <th>Chi Tiết</th>
+                                                                                                </tr>
+                                                                                          
+                                                                                    </thead>
+                                                                                   <tbody>
+                                                                                        <tr>
+                                                                                                <td><p>{{$donhang.Madh}}</p></td>
+                                                                                                <td>{{$donhang.Ten}}</td>
+                                                                                                <td><p>{{$donhang.Diachi}}</p></td>
+                                                                                                <td>{{$donhang.Email}}</td>
+                                                                                                <td>{{$donhang.Sdt}}</td>
+                                                                                                <td>{{$donhang.Note}}</td>
+                                                                                                <td>{{$donhang.Ngaylap}}</td>
+                                                                                                {{if eq $donhang.Tinhtrang  1 }}
+                                                                                                <td>Đã Giao</td>
+                                                                                                {{end}}
+                                                                                                {{if ne $donhang.Tinhtrang  1 }}
+                                                                                                <td>Chưa Đã Giao Hàng </td>
+                                                                                                {{end}}
+                                                                                                <td><input type="button" value="xem chi tiết" style="width: 150px;height: 30px;background-color: blue;color: white" onclick="xemchitiet(idhd='{{$donhang.Madh}}')">
+                                                                                                  <p></p>
+                                                                                                  <p><a href=".../../hoadoncuaban?mahoadon={{ $donhang.Madh}}"  target="_blank"><input type="button" value="In hóa Đơn" style="width: 150px;height: 30px;background-color: green;color: white"></a></p>
+                                                                                                  {{if ne $donhang.Tinhtrang  1 }}
+                                                                                                  <p><input type="button" value="Hủy Đơn Hàng" style="width: 150px;height: 30px;background-color: red;color: white" onclick="huydonhang(madonhang= {{$donhang.Madh}})"></p>
+                                                                                                  {{end}}
+                                                                                              </td>
+                                                                                                
+                                                                                              </tr>
+                                                                                        <table id="{{$donhang.Madh}}" style="width: 150%;margin-left: 20%;display: none;position: initial">
+                                                                                                <thead>
+                                                                                                        <tr>
+                                                                                                     
+                                                                                                          <th>Mã Hóa Đơn</th>
+                                                                                                          <th>Tên Sản Phẩm</th>
+                                                                                                          <th>Số Lượng </th>
+                                                                                                          <th>Tổng Tiền</th>
+                                                                                                         
+                                                                                                         
+                                                                                                        </tr>
+                                                                                                      </thead>
+                                                                                                      
+                                                                                                     
+                                                                                        {{range $i,  $donhangmini := $donhangmn}}
+                                                                                   
+                                                                                        {{if eq $donhangmini.Mahd $hoadon.Mahd }}
+                                                                                        <tbody>
+                                                                                  
+                                                                                                        <td><p>{{$donhangmini.Mahd}}</p></td>
+
+                                                                                                        {{range   $sanpham := $sp}}
+                                                                                                        {{if eq $donhangmini.Idsanpham $sanpham.Idsp }}
+                                                                                                        <td><p>{{$sanpham.Tensanpham}}</p></td>
+                                                                                                        {{end}}
+                                                                                                        {{end}}
+                                                                                                        <td>{{$donhangmini.Soluong}}</td>
+                                                                                                        <td><p> {{(add (floatchuoi  $donhangmini.Tongtien) "1" "*") }}</p></td>
+                                                                                                       
+                                                                                    
+                                                                                     
+                                                                                    </tbody>
+                                                                                    {{end}}
+                                                                                    {{end}}
+                                                                                    <tbody>
+                                                                                    <td colspan="3">Thành Tiền :</td>
+                                                                                    <td colspan="2" id="thanhtien{{$donhang.Madh}}"></td>
+                                                                                </tbody>
+                                                                                                        
+                                                                                </br>
+                                                                   </table>
+                                                                                   </tbody>
+                                                                                </table>
+
+                                                                                {{end}}
+                                                                                {{end}}
+                                                                                {{end}}
+                                                                                {{end}}
+                                                                            </div>
+                                                                           
+                                                                        </div>
+                                                                    </div>
+                                                
+                                                                   
+                                                                </div>
+                                                            </div><!-- .animated -->
+                                                        </div><!-- .content -->
+                                           
+                                                            
+
+                          
+
+                                                        <style>
+                                                                table {
+                                                                  font-family: arial, sans-serif;
+                                                                  border-collapse: collapse;
+                                                                  width: 100%;
+                                                                }
+                                                                
+                                                                td, th {
+                                                                  border: 1px solid #dddddd;
+                                                                  text-align: left;
+                                                                  padding: 8px;
+                                                                }
+                                                                
+                                                                tr:nth-child(even) {
+                                                                  background-color: #dddddd;
+                                                                }
+                                                                </style>
+
+
+
+
+                             
+                               </div>
+                               </div>
+                               </div>
+                               </div>
+                              
+                          
+
+
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     
+                        </div>
+                        <div class="col-lg-3 order-2 order-lg-1">
+                            <!--sidebar-categores-box start  -->
+                         
+                            <!--sidebar-categores-box end  -->
+                            <!--sidebar-categores-box start  -->
+                            <div class="sidebar-categores-box">
+                                <div class="sidebar-title">
+                                    <h2>Quản Lý Tài Khoản</h2>
+                                </div>
+                                <!-- btn-clear-all start -->
+                            
+                                <!-- btn-clear-all end -->
+                                <!-- filter-sub-area start -->
+                            
+                                <!-- filter-sub-area end -->
+                                <!-- filter-sub-area start -->
+                                <div class="filter-sub-area pt-sm-10 pt-xs-10">
+                                    <h5 class="filter-sub-titel">Quản Lý Đơn Hàng</h5>
+                                    <div class="categori-checkbox">
+                                        <form action="#">
+                                            <ul>
+                                                <li><a style="cursor: pointer" onclick="thaydoi1()">Đơn Hàng Của Tôi</a></li>
+                                              
+                                                
+                                            </ul>
+                                        </form>
+                                    </div>
+                                 </div>
+                                <!-- filter-sub-area end -->
+                                <!-- filter-sub-area start -->
+                                <div class="filter-sub-area pt-sm-10 pt-xs-10">
+                                    <h5 class="filter-sub-titel">Tài Khoản</h5>
+                                    <div class="size-checkbox">
+                                        <form action="#">
+                                            <ul>
+                                                    <li><a style="cursor: pointer" onclick="thaydoi2()">Thông Tin Tài Khoản</a></li>
+                                                <li><a style="cursor: pointer" onclick="thaydoi3()">Thay Đổi Mật Khẩu</a></li>
+                                            
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- filter-sub-area end -->
+                                <!-- filter-sub-area start -->
+                         
+                                <!-- filter-sub-area end -->
+                                <!-- filter-sub-area start -->
+                              
+                                <!-- filter-sub-area end -->
+                            </div>
+                            <!--sidebar-categores-box end  -->
+                            <!-- category-sub-menu start -->
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content Wraper Area End Here -->
+            <!-- Begin Footer Area -->
+            <div class="footer">
+                <!-- Begin Footer Static Top Area -->
+                <div class="footer-static-top">
+                    <div class="container">
+                        <!-- Begin Footer Shipping Area -->
+                        <div class="footer-shipping pt-60 pb-55 pb-xs-25">
+                            <div class="row">
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img src="images/shipping-icon/1.png" alt="Shipping Icon">
+                                        </div>
+                                        <div class="shipping-text">
+                                            <h2>Giao Hàng Miễn Phí </h2>
+                                            <p>Giao Hàng miễn Phí Cho Đơn Hàng Trên 2 Triệu Đồng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Li's Shipping Inner Box Area End Here -->
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img src="images/shipping-icon/2.png" alt="Shipping Icon">
+                                        </div>
+                                        <div class="shipping-text">
+                                            <h2>Thanh toán an toàn</h2>
+                                            <p>Thanh Toán Trực Tiếp Khi Nhận Hàng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Li's Shipping Inner Box Area End Here -->
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img src="images/shipping-icon/3.png" alt="Shipping Icon">
+                                        </div>
+                                        <div class="shipping-text">
+                                            <h2>Shop Uy Tính 100%</h2>
+                                            <p>Đảm Bảo Quyền Lời Của Khách Hàng Khi Mua Hàng Tại Shop</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Li's Shipping Inner Box Area End Here -->
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img src="images/shipping-icon/4.png" alt="Shipping Icon">
+                                        </div>
+                                        <div class="shipping-text">
+                                            <h2> Hỗ Trợ Khách Hàng 24/7 </h2>
+                                            <p>Hotline <a href="tel:0944970893" rel="nofollow" style="color: red">0944970893</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Li's Shipping Inner Box Area End Here -->
+                            </div>
+                        </div>
+                        <!-- Footer Shipping Area End Here -->
+                    </div>
+                </div>
+                <!-- Footer Static Top Area End Here -->
+                <!-- Begin Footer Static Middle Area -->
+                <div class="footer-static-middle">
+                    <div class="container">
+                        <div class="footer-logo-wrap pt-50 pb-35">
+                            <div class="row">
+                                <!-- Begin Footer Logo Area -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="footer-logo">
+                                        <a href="../../" style="color: #e83e8c;font-size: 40px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                                            Mỹ Phẩm JNN
+                                        </a>
+                                        <p class="info">
+                                            Cảm Ơn Qúy Khách Đã Ủng Hộ Website Của Chúng Tôi , Mong Qúy Khách Có Một Ngày Mua Sắm Vui Vẻ
+                                        </p>
+                                    </div>
+                                    <ul class="des">
+                                        <li>
+                                            <span>Địa Chỉ: </span>
+                                            285 CMT8, Tòa nhà Viettel, phường 12, quận 10, HCM
+                                        </li>
+                                        <li>
+                                            <span>Phone: </span>
+                                            <a href="tel:0944970893" rel="nofollow">0944970893</a>
+                                        </li>
+                                        <li>
+                                            <span>Email: </span>
+                                            <a href="mailto://yenngan1990@gmail.com">yenngan1990@gmail.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Footer Logo Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-2 col-md-3 col-sm-6">
+                                    <div class="footer-block">
+                                        <h3 class="footer-block-title">Sản Phẩm</h3>
+                                        <ul>
+                                            <li><a style="cursor: pointer" >Sản Phẩm Mới</a></li>
+                                            <li><a style="cursor: pointer" >Giảm Gía Nhiều Nhất</a></li>
+                                            <li><a style="cursor: pointer" >Được Xem Nhiều Nhất</a></li>
+                                       
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Footer Block Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-2 col-md-3 col-sm-6">
+                                    <div class="footer-block">
+                                        <h3 class="footer-block-title">Liên Hệ</h3>
+                                        <ul>
+                                            <li><a style="cursor: pointer" >Thông Tin Shop</a></li>
+                                            <li><a href="https://zalo.me/0944970893"> liên hệ chúng tôi</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Footer Block Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-4">
+                                    <div class="footer-block">
+                                        <h3 class="footer-block-title">Follow Us</h3>
+                                        <ul class="social-link">
+                                            <li class="twitter">
+                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="rss">
+                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
+                                                    <i class="fa fa-rss"></i>
+                                                </a>
+                                            </li>
+                                            <li class="google-plus">
+                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li class="facebook">
+                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="youtube">
+                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                    <i class="fa fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            <li class="instagram">
+                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Begin Footer Newsletter Area -->
+                                    <div class="footer-newsletter">
+                                        <h4>Nhận Thông Tin Sản Phẩm Mới Nhất </h4>
+                                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
+                                           <div id="mc_embed_signup_scroll">
+                                              <div id="mc-form" class="mc-form subscribe-form form-group" >
+                                                <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
+                                                <button  class="btn" id="mc-submit">Đăng Ký</button>
+                                              </div>
+                                           </div>
+                                        </form>
+                                    </div>
+                                    <!-- Footer Newsletter Area End Here -->
+                                </div>
+                                <!-- Footer Block Area End Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Static Middle Area End Here -->
+                <!-- Begin Footer Static Bottom Area -->
+                <div class="footer-static-bottom pt-55 pb-55">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Begin Footer Links Area -->
+                                <div class="footer-links">
+                                
+                                </div>
+                                <!-- Footer Links Area End Here -->
+                                <!-- Begin Footer Payment Area -->
+                                <div class="copyright text-center">
+                                    <a style="cursor: pointer" >
+                                        <img src="images/payment/1.png" alt="">
+                                    </a>
+                                </div>
+                                <!-- Footer Payment Area End Here -->
+                                <!-- Begin Copyright Area -->
+                                <div class="copyright text-center pt-25">
+                                    <span><a href="https://www.templatespoint.net" target="_blank">Templates Point</a></span>
+                                </div>
+                                <!-- Copyright Area End Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Static Bottom Area End Here -->
+            </div>
+            <!-- Footer Area End Here -->
+            <!-- Begin Quick View | Modal Area -->
+            <div class="modal fade modal-wrapper" id="exampleModalCenter" >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="modal-inner-area row">
+                                <div class="col-lg-5 col-md-6 col-sm-6">
+                                   <!-- Product Details Left -->
+                                    <div class="product-details-left">
+                                        <div class="product-details-images slider-navigation-1">
+                                            <div class="lg-image">
+                                                <img src="images/product/large-size/1.jpg" alt="product image">
+                                            </div>
+                                            <div class="lg-image">
+                                                <img src="images/product/large-size/2.jpg" alt="product image">
+                                            </div>
+                                            <div class="lg-image">
+                                                <img src="images/product/large-size/3.jpg" alt="product image">
+                                            </div>
+                                            <div class="lg-image">
+                                                <img src="images/product/large-size/4.jpg" alt="product image">
+                                            </div>
+                                            <div class="lg-image">
+                                                <img src="images/product/large-size/5.jpg" alt="product image">
+                                            </div>
+                                            <div class="lg-image">
+                                                <img src="images/product/large-size/6.jpg" alt="product image">
+                                            </div>
+                                        </div>
+                                        <div class="product-details-thumbs slider-thumbs-1">                                        
+                                            <div class="sm-image"><img src="images/product/small-size/1.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="images/product/small-size/2.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="images/product/small-size/3.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="images/product/small-size/4.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="images/product/small-size/5.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="images/product/small-size/6.jpg" alt="product image thumb"></div>
+                                        </div>
+                                    </div>
+                                    <!--// Product Details Left -->
+                                </div>
+
+                                <div class="col-lg-7 col-md-6 col-sm-6">
+                                    <div class="product-details-view-content pt-60">
+                                        <div class="product-info">
+                                            <h2>Today is a good day Framed poster</h2>
+                                            <span class="product-details-ref">Reference: demo_15</span>
+                                            <div class="rating-box pt-20">
+                                                <ul class="rating rating-with-review-item">
+                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                    <li class="review-item"><a href="#">Read Review</a></li>
+                                                    <li class="review-item"><a href="#">Write Review</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price-box pt-20">
+                                                <span class="new-price new-price-2">$57.98</span>
+                                            </div>
+                                            <div class="product-desc">
+                                                <p>
+                                                    <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="product-variants">
+                                                <div class="produt-variants-size">
+                                                    <label>Dimension</label>
+                                                    <select class="nice-select">
+                                                        <option value="1" title="S" selected="selected">40x60cm</option>
+                                                        <option value="2" title="M">60x90cm</option>
+                                                        <option value="3" title="L">80x120cm</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="single-add-to-cart">
+                                                <form action="#" class="cart-quantity">
+                                                    <div class="quantity">
+                                                        <label>Quantity</label>
+                                                        <div class="cart-plus-minus">
+                                                            <input class="cart-plus-minus-box" value="1" type="text">
+                                                            <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                            <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="add-to-cart" type="submit">Add to cart</button>
+                                                </form>
+                                            </div>
+                                            <div class="product-additional-info pt-25">
+                                                <a class="wishlist-btn" href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a>
+                                                <div class="product-social-sharing pt-25">
+                                                    <ul>
+                                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
+                                                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <!-- Quick View | Modal Area End Here -->
+        </div>
+        <!-- Body Wrapper End Here -->
+        <!-- jQuery-V1.12.4 -->
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="js/vendor/popper.min.js"></script>
+        <!-- Bootstrap V4.1.3 Fremwork js -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Ajax Mail js -->
+        <script src="js/ajax-mail.js"></script>
+        <!-- Meanmenu js -->
+        <script src="js/jquery.meanmenu.min.js"></script>
+        <!-- Wow.min js -->
+        <script src="js/wow.min.js"></script>
+        <!-- Slick Carousel js -->
+        <script src="js/slick.min.js"></script>
+        <!-- Owl Carousel-2 js -->
+        <script src="js/owl.carousel.min.js"></script>
+        <!-- Magnific popup js -->
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <!-- Isotope js -->
+        <script src="js/isotope.pkgd.min.js"></script>
+        <!-- Imagesloaded js -->
+        <script src="js/imagesloaded.pkgd.min.js"></script>
+        <!-- Mixitup js -->
+        <script src="js/jquery.mixitup.min.js"></script>
+        <!-- Countdown -->
+        <script src="js/jquery.countdown.min.js"></script>
+        <!-- Counterup -->
+        <script src="js/jquery.counterup.min.js"></script>
+        <!-- Waypoints -->
+        <script src="js/waypoints.min.js"></script>
+        <!-- Barrating -->
+        <script src="js/jquery.barrating.min.js"></script>
+        <!-- Jquery-ui -->
+        <script src="js/jquery-ui.min.js"></script>
+        <!-- Venobox -->
+        <script src="js/venobox.min.js"></script>
+        <!-- Nice Select js -->
+        <script src="js/jquery.nice-select.min.js"></script>
+        <!-- ScrollUp js -->
+        <script src="js/scrollUp.min.js"></script>
+        <!-- Main/Activator js -->
+        <script src="js/main.js"></script>
+    </body>
+
+<!-- shop-left-sidebar31:48-->
+</html>
+<script>
+
+var a=1;
+function xemchitiet(){
+if(a==1){
+    $('#'+idhd).css('display',"Block");
+a=0;
+}else{
+    a=1;
+    $('#'+idhd).css('display',"none");
+}
+}
+</script>
+
+
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <script>
+        var Tongtien=0;
+                                                                      {{range $hoadon := .Hoadon}}
+                                                                      {{if eq .Iduser  $hoadon.Iduser }}
+                                                                      {{range $donhang :=$donhang1}}
+                                                                      {{if eq $donhang.Madh  $hoadon.Madh }}
+
+                                                                      {{range $i,  $donhangmini := $donhangmn}}
+                                                                                   
+                                                                      {{if eq $donhangmini.Mahd $hoadon.Mahd }}
+
+
+                                                                     Tongtien+= {{$donhangmini.Tongtien}};
+                                                                       $('#thanhtien{{$donhang.Madh}}').html(dinhdangtiente(Tongtien) +"VNĐ");
+
+                                                                                 {{end}}
+                                                                                {{end}}
+                                                                                {{end}}
+                                                                                {{end}}
+                                                                                {{end}}
+                                                                                {{end}}
+
+                                                                                function reverse (s) {
+    var o = '';
+    for (var i = s.length - 1; i >= 0; i--)
+        o += s[i];
+    return o;
+  }
+function dinhdangtiente(num){
+
+   var a=reverse( num.toString());
+
+var rs='';
+   for(var i=0;i<a.length;i++){
+      
+      if(i%3==0&&i!=0){
+
+        rs+=',';
+
+      }
+   rs+= a.charAt(i);
+
+   }
+   return reverse(rs) ;
+}
+
+function dongdiachi(){
+
+    $('#diachi').css('display','none');
+}
+
+function modiachi(){
+
+$('#diachi').css('display','block');
+}
+
+
+function thaydoi1(){
+
+
+        $('#donhang').css('display','block');
+   
+        $('#thongtintaikhoan').css('display','none');
+        $('#doimatkhau').css('display','none');
+}
+
+  
+function thaydoi2(){
+
+        $('#thongtintaikhoan').css('display','block');
+ 
+        $('#donhang').css('display','none');
+        $('#doimatkhau').css('display','none')
+    }
+
+  
+    function thaydoi3(){
+    
+        $('#doimatkhau').css('display','block');
+
+        $('#thongtintaikhoan').css('display','none');
+        $('#donhang').css('display','none');
+    }
+
+    function thaydoimathau()
+    {
+    
+        $.post('../../thaydoimatkhau',{'thaydoimatkhau':'1','matkhaucu':$('#matkhaucu').val(),'matkhaumoi':$('#matkhau1').val()},function(data){
+          alert(data);
+          window.location="";
+        });
+    }
+
+    </script>
+    <script>
+            function themvaogiohang()
+            {
+                $.get('../themvaogiohang',{'idsanpham':idsanpham,'soluong':1},function (data) {
+                   
+                
+              
+                    $('#hienthongbao').css('display','block');
+                   if(data=="sản phẩm đã được thêm vào giỏ hàng"){
+                   var a =' <div class="sufee-alert alert with-close alert-success alert-dismissible fade show"> <span class="badge badge-pill badge-success">Success</span> <span style=" padding-left:20px">' + data+ '</span> <button class="close" aria-label="Close" type="button" data-dismiss="alert"> <span aria-hidden="true">×</span> </button> </div>'
+                   $('#hienthongbao').html(a);
+                   }else{
+            
+                       var a='<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show"> <span class="badge badge-pill badge-danger">Success</span><span style=" padding-left:20px">'+data+'</span> <button class="close" aria-label="Close" type="button" data-dismiss="alert"> <span aria-hidden="true">×</span> </button> </div>'
+                       $('#hienthongbao').html(a);
+                   }
+                    loadgiohang();
+                 
+                });
+            }
+            window.onload=  function(){
+            
+                loadgiohang();
+            } ;
+            
+            function loadgiohang(){
+                $.get('../giohang',function (data) {
+                    $('#cartmini').html(data);
+                    $('#soluong').html($('#soluongtronggiohang').html());
+                });
+            }
+            function xoakhoigiohang()
+            {
+                $.get('../giohang',{'idspcanxoa':idsp},function (data) {
+                    $('#hienthongbao').css('display','block');
+                  
+                   var a =' <div class="sufee-alert alert with-close alert-success alert-dismissible fade show"> <span class="badge badge-pill badge-success">Success</span> <span style=" padding-left:20px">' + "Xóa Thành Công"+ '</span> <button class="close" aria-label="Close" type="button" data-dismiss="alert"> <span aria-hidden="true">×</span> </button> </div>'
+                   $('#hienthongbao').html(a);
+                
+                    loadgiohang();
+                });
+            }
+            function dangxuat(){
+                $.post('../../xacnhantaikhoan',{'dangxuat':1},function(data){
+                   
+                        window.location="";
+                    
+                  
+                });
+            }
+            
+            function hienthichitietsanpham(){
+            
+            $.get('../../viewthongtinsanpham',{'idsanpham':idsanpham},function (data) {
+              
+                  $('#viewsanpham').html(data);
+            
+                });
+            }
+            function khungdangnhap(){
+                $('#khungdangnhap').css("display",'block');
+               
+                $.get('../../khungdangnhap',function(data){
+                    $('#khungdangnhap').html(data);
+                });
+                
+            }
+            function dongdangnhap(){
+                $('#khungdangnhap').css("display",'none');
+                $('#khungdangnhap').html("");
+            }
+            function dangnhap(){
+            $.post('../../xacnhantaikhoan',{'dangnhap':1,'email':$('#loginEmail').val(),'password':$('#loginPassword').val()},function(data){
+                if(data=="Đăng Nhập Thành Công")
+                {
+                    window.location="";
+                }
+                else{
+                    $('#thongbaosai').html("Tài Khoản Hoặc Mật Khẩu Không Chính Xác");
+                }
+              
+            });
+            }
+            function dong(){
+    
+    $('#thongbao1').css('display','none');
+ 
+    }
+
+var madonhang1 ;
+    function huydonhang(){
+        $('#thongbao1').css('display','block');
+        madonhang1=madonhang;
+    }
+
+
+    function thuchienhuy(){
+        $('#lydohuy').val();
+
+        $.get('../../huydonhang',{"huydon":'1','madonhang':madonhang1},function(data){
+            $('#hienthongbao').css('display','block');
+            $('#thongbao1').css('display','none');
+            var a =' <div class="sufee-alert alert with-close alert-success alert-dismissible fade show"> <span class="badge badge-pill badge-success">Thất Bại</span> <span style=" padding-left:20px">' + data+ '</span> <button class="close" aria-label="Close" type="button" data-dismiss="alert"> <span aria-hidden="true">×</span> </button> </div>'
+                   $('#hienthongbao').html(a);
+
+                   if(data!="Đơn Hàng Đã Được Giao Cho Nhà Vận Chuyển"){
+                       window.location="";
+                   }
+        });
+    }
+            </script>

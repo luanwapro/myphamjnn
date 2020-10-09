@@ -1,0 +1,133 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Đăng Nhập</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+
+<body class="bg-dark">
+
+    <div  id="thongbao1" style="position: fixed;width: 50%;z-index: 1000;margin-top: 5%;margin-left: 25%;display: none">
+                   
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="smallmodalLabel">Vui Lòng Nhập Email Để Lấy Lại Mật Khẩu </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="dong()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="email" style="width: 60%;margin-left: 10%" id="email" >
+                <input type="button" value="Xác Nhận"  onclick="xacnhan()" style="background-color: green;color: white;border: 1px green solid;border-radius: 5px;cursor: pointer; ">
+            </div>
+            <div class="modal-footer">
+                <div style="color: red" id="thongbaoemail"></div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="../../trangchu">Quay Về Trang Chủ</a></button>
+                <button type="button" class="btn btn-primary" onclick="dong()"> Đóng</button>
+            </div>
+        </div>
+   
+</div>
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="images/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="login-form">
+                    <form>
+                        <div id="thongbaosai" style="color: red"></div>
+                        <div class="form-group">
+                            <label>Email Đăng Nhập</label>
+                            <input type="email" id="loginEmail" class="form-control" placeholder="Email">
+                        </div>
+                            <div class="form-group">
+                                <label>Mật Khẩu</label>
+                                <input type="password" id="loginPassword" class="form-control" placeholder="Password">
+                        </div>
+                                <div class="checkbox">
+                                    <label>
+                                <input type="checkbox"> Nhớ Tôi
+                            </label>
+                                    <label class="pull-right">
+                                <a style="cursor: pointer" onclick="laymatkhau()">Quên Mật Khẩu?</a>
+                            </label>
+
+                                </div>
+                                <button type="button" class="btn btn-success btn-flat m-b-30 m-t-30" onclick="dangnhap()">Đăng Nhập</button>
+                             
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+ function laymatkhau(){
+       
+        $('#thongbao1').css('display','block');
+    }
+    
+function dong(){
+    
+    $('#thongbao1').css('display','none');
+ 
+    }
+
+    function xacnhan(){
+        $.post('../../laylaimatkhau',{'email':$('#email').val()});
+        $('#thongbaoemail').html('Mật Khẩu Đã Được Gửi Vui Lòng Kiểm Tra Email ^^ !')
+    }
+function dangnhap(){
+    $.post('../../xacnhantaikhoan',{'dangnhap':1,'email':$('#loginEmail').val(),'password':$('#loginPassword').val()},function(data){
+        if(data=="Đăng Nhập Thành Công")
+        {
+            window.location="../../quanly";
+        }
+        else{
+            $('#thongbaosai').html("Tài Khoản Hoặc Mật Khẩu Không Chính Xác");
+        }
+      
+    });
+
+   
+}</script>
